@@ -18,9 +18,13 @@ import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 import edu.wpi.first.wpilibj2.command.sysid.SysIdRoutine;
 import frc.robot.Constants.OperatorConstants;
+import frc.robot.commands.swervedrive.drivebase.AbsoluteDrive;
 import frc.robot.commands.swervedrive.drivebase.AbsoluteDriveAdv;
+import frc.robot.commands.swervedrive.drivebase.AbsoluteFieldDrive;
 import frc.robot.subsystems.swervedrive.SwerveSubsystem;
 import java.io.File;
+
+import javax.management.OperationsException;
 
 import com.pathplanner.lib.auto.AutoBuilder;
 
@@ -62,7 +66,7 @@ public class RobotContainer
                                                                    driverXbox.getHID()::getAButtonPressed,
                                                                    driverXbox.getHID()::getXButtonPressed,
                                                                    driverXbox.getHID()::getBButtonPressed);
-
+    
     // Applies deadbands and inverts controls because joysticks
     // are back-right positive while robot
     // controls are front-left positive
@@ -82,19 +86,34 @@ public class RobotContainer
     Command driveFieldOrientedAnglularVelocity = drivebase.driveAngularRotationCommand(
         () -> MathUtil.applyDeadband(driverXbox.getLeftY(), OperatorConstants.LEFT_Y_DEADBAND),
         () -> MathUtil.applyDeadband(driverXbox.getLeftX(), OperatorConstants.LEFT_X_DEADBAND),
-        () -> driverXbox.getRightX() );
+        () -> driverXbox.getRightX());
 
     Command driveFieldOrientedDirectAngleSim = drivebase.simDriveCommand(
         () -> MathUtil.applyDeadband(driverXbox.getLeftY(), OperatorConstants.LEFT_Y_DEADBAND),
         () -> MathUtil.applyDeadband(driverXbox.getLeftX(), OperatorConstants.LEFT_X_DEADBAND),
         () -> driverXbox.getRawAxis(2));
 
+
+    AbsoluteFieldDrive absoluteFieldDrive = new AbsoluteFieldDrive(
+      drivebase, 
+      () -> MathUtil.applyDeadband(driverXbox.getLeftY(), OperatorConstants.LEFT_Y_DEADBAND), 
+      () -> MathUtil.applyDeadband(driverXbox.getLeftX(), OperatorConstants.LEFT_X_DEADBAND), 
+      () -> MathUtil.applyDeadband(driverXbox.getRightX()*OperatorConstants.TURN_CONSTANT, OperatorConstants.RIGHT_X_DEADBAND));
+
+    AbsoluteDrive absoluteDrive = new AbsoluteDrive(
+      drivebase, 
+      () -> MathUtil.applyDeadband(driverXbox.getLeftY(), OperatorConstants.LEFT_Y_DEADBAND), 
+      () -> MathUtil.applyDeadband(driverXbox.getLeftX(), OperatorConstants.LEFT_X_DEADBAND), 
+      () -> MathUtil.applyDeadband(Math.cos(driverXbox.getRightX())*OperatorConstants.TURN_CONSTANT, OperatorConstants.RIGHT_X_DEADBAND),
+      () -> MathUtil.applyDeadband(Math.sin(driverXbox.getRightX())*OperatorConstants.TURN_CONSTANT, OperatorConstants.RIGHT_X_DEADBAND));
+
+
     // Command driveFieldOrientedBoomBox = drivebase.driveAngularRotationCommand(
     //     () -> driverXbox.getLeftY(),
     //     () -> driverXbox.getLeftX(), 
     //     () -> driverXbox.getRightX());
 
-    drivebase.setDefaultCommand(!RobotBase.isSimulation() ? driveFieldOrientedAnglularVelocity : driveFieldOrientedDirectAngleSim);
+    drivebase.setDefaultCommand(!RobotBase.isSimulation() ? absoluteFieldDrive : driveFieldOrientedDirectAngleSim);
     // drivebase.setDefaultCommand(drivebase.driveCommand(() -> -driverXbox.getLeftY() *2, () -> driverXbox.getLeftX() *2, () -> -driverXbox.getRightX() *2));
     
     SmartDashboard.putData("Autos", autoChooser);
@@ -111,12 +130,14 @@ public class RobotContainer
   {
     // Schedule `ExampleCommand` when `exampleCondition` changes to `true`
 
-    driverXbox.a().onTrue((Commands.runOnce(drivebase::zeroGyro)));
-    driverXbox.x().onTrue(Commands.runOnce(drivebase::addFakeVisionReading));
-    driverXbox.b().whileTrue(
-        Commands.deferredProxy(() -> drivebase.driveToPose(
-                                   new Pose2d(new Translation2d(4, 4), Rotation2d.fromDegrees(0)))
-                              ));
+    // driverXbox.a().onTrue((Commands.runOnce(drivebase::zeroGyro)));
+    // driverXbox.x().onTrue(Commands.runOnce(drivebase::addFakeVisionReading));
+    // driverXbox.b().whileTrue(
+    //     Commands.deferredProxy(() -> drivebase.driveToPose(
+    //                                new Pose2d(new Translation2d(4, 4), Rotation2d.fromDegrees(0)))
+    //                           ));
+
+
     // driverXbox.x().whileTrue(Commands.runOnce(drivebase::lock, drivebase).repeatedly());
     // driverXbox.y().whileTrue(Commands.deferredProxy(() -> drivebase.sysIdDriveMotorCommand()), drivebase.sysIdAngleMotorCommand());
   }
