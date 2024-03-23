@@ -96,8 +96,8 @@ public class RobotContainer
 
     AbsoluteFieldDrive absoluteFieldDrive = new AbsoluteFieldDrive(
       drivebase, 
-      () -> MathUtil.applyDeadband(driverXbox.getLeftY(), OperatorConstants.LEFT_Y_DEADBAND), 
-      () -> MathUtil.applyDeadband(driverXbox.getLeftX(), OperatorConstants.LEFT_X_DEADBAND), 
+      () -> MathUtil.applyDeadband(driverXbox.getLeftY()*0.9, OperatorConstants.LEFT_Y_DEADBAND), 
+      () -> MathUtil.applyDeadband(driverXbox.getLeftX()*0.9, OperatorConstants.LEFT_X_DEADBAND), 
       () -> MathUtil.applyDeadband(driverXbox.getRightX()*OperatorConstants.TURN_CONSTANT, OperatorConstants.RIGHT_X_DEADBAND));
 
     AbsoluteDrive absoluteDrive = new AbsoluteDrive(
