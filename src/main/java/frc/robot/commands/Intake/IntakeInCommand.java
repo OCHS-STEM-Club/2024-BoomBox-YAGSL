@@ -5,15 +5,16 @@
 package frc.robot.commands.Intake;
 
 import edu.wpi.first.wpilibj2.command.Command;
+import frc.robot.Constants;
 import frc.robot.LimelightHelpers;
 import frc.robot.subsystems.IntakeSubsystem;
 
-public class IntakeCommand extends Command {
+public class IntakeInCommand extends Command {
   /** Creates a new IntakeCommand. */
   IntakeSubsystem m_intakeSubsystem;
   // LimelightSubsystem m_limelightSubsystem;
   /** Creates a new IntakeCommand. */
-  public IntakeCommand(IntakeSubsystem intakeSubsystem) {
+  public IntakeInCommand(IntakeSubsystem intakeSubsystem) {
   m_intakeSubsystem = intakeSubsystem;
   // m_limelightSubsystem = limelight;
     // Use addRequirements() here to declare subsystem dependencies.
@@ -27,22 +28,11 @@ public class IntakeCommand extends Command {
   @Override
   public void execute() {
    if (m_intakeSubsystem.beamBreakSensor() == true) {
-     m_intakeSubsystem.intakeSpeed(0.4);
+     m_intakeSubsystem.intakeSpeed(Constants.IntakeConstants.kIntakeInSpeed);
      LimelightHelpers.setLEDMode_ForceOff("limelight-boombox");
    } else  m_intakeSubsystem.intakeOff();
         LimelightHelpers.setLEDMode_ForceBlink("limelight-boombox");
-
-  // if (m_intakeSubsystem.beamBreakSensor() == true) {
-  //    m_intakeSubsystem.intakeSpeed(0.4);
-  //    LimelightHelpers.setLEDMode_ForceOff("limelight-boombox");
-  //  } else if (m_intakeSubsystem.beamBreakSensor() == false) {
-  //   m_intakeSubsystem.intakeOff();
-  //   LimelightHelpers.setLEDMode_ForceBlink("limelight-boombox");
-    
-  //  }
-   
-        
-   
+         
   }
 
   // Called once the command ends or is interrupted.

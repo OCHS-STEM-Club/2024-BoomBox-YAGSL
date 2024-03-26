@@ -11,8 +11,8 @@ public class IntakeOverrideCommand extends Command {
   /** Creates a new IntakeOverrideCommand. */
   IntakeSubsystem m_intakeSubsystem;
   public IntakeOverrideCommand(IntakeSubsystem intakeSubsystem) {
-  m_intakeSubsystem = intakeSubsystem;
     // Use addRequirements() here to declare subsystem dependencies.
+    m_intakeSubsystem = intakeSubsystem;
   }
 
   // Called when the command is initially scheduled.
@@ -22,7 +22,7 @@ public class IntakeOverrideCommand extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    m_intakeSubsystem.intakeSpeed(0.4);
+    m_intakeSubsystem.intakeIn();
   }
 
   // Called once the command ends or is interrupted.

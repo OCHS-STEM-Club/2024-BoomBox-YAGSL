@@ -21,10 +21,10 @@ public class IntakeSubsystem extends SubsystemBase {
 
     public IntakeSubsystem() {
         intakeMotor = new CANSparkMax(Constants.IntakeConstants.kIntakeMotorID, MotorType.kBrushless);
-        intakeSensor = new DigitalInput(0);
+        intakeSensor = new DigitalInput(Constants.IntakeConstants.kBeamBreakPort);
         intakeMotor.setInverted(false);
 
-        intakeMotor.setPeriodicFramePeriod(PeriodicFrame.kStatus3, 10);
+        
 
         intakeMotor.setSmartCurrentLimit(30,30);
 
@@ -39,16 +39,14 @@ public class IntakeSubsystem extends SubsystemBase {
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
-
-   // Logger.recordOutput("Digital Input sensor", intakeSensor.get());
   }
 
   public void intakeSpeed(double speed){
     intakeMotor.set(speed);
   }
 
-  public void intakeOn() {
-    intakeMotor.set(0.4);
+  public void intakeIn() {
+    intakeMotor.set(Constants.IntakeConstants.kIntakeInSpeed);
   }
 
   public void intakeOff() {
@@ -56,15 +54,11 @@ public class IntakeSubsystem extends SubsystemBase {
   }
 
   public void intakeOut() {
-    intakeMotor.set(-0.45);
+    intakeMotor.set(Constants.IntakeConstants.kIntakeOutSpeed);
   }
 
   public boolean beamBreakSensor() {
     return intakeSensor.get();
-  }
-
-  public void blink(){
-    // LimelightHelpers.setLEDMode_ForceBlink("limlight - boombox")
   }
 }
 

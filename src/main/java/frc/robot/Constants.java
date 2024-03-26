@@ -46,18 +46,26 @@ public final class Constants
     public static final double LEFT_X_DEADBAND  = 0.1;
     public static final double LEFT_Y_DEADBAND  = 0.1;
     public static final double RIGHT_X_DEADBAND = 0.2;
-    public static final double TURN_CONSTANT    = 6;
+
+    public static final double ROTATION_CONSTANT = 6;
+    public static final double TRANSLATION_X_CONSTANT = 0.9;
+    public static final double TRANSLATION_Y_CONSTANT = 0.9;
 
     public static final int kOperatorControllerPort = 2;
+    public static final int kDriverControllerPort = 0;
   }
 
   public static class ShooterConstants {
     public static final int kShooterMotorLeftID = 21;
     public static final int kShooterMotorRightID = 22;
+    public static final double kShooterSpeed = 0.4;
   }
 
   public static class IntakeConstants {
     public static final int kIntakeMotorID = 18;
+    public static final double kIntakeInSpeed = 0.4;
+    public static final double kIntakeOutSpeed = -0.45;
+    public static final int kBeamBreakPort = 0;
   }
 
   public static class ArmConstants {
@@ -72,6 +80,13 @@ public final class Constants
     public static final int kFF = 0;
     public static final int kMaxOutput = 1;
     public static final double kMinOutput = -1;
+
+    public static final double kIntakeSetpoint = 0;
+    public static final double kShooterSetpoint = 12;
+    public static final double kAmpSetpoint = 94;
+
+    public static final double kArmUpSpeed = 0.2;
+    public static final double kArmDownSpeed = -0.2;
 
   }
 }

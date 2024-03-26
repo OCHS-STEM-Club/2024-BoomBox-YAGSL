@@ -17,19 +17,18 @@ import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 import edu.wpi.first.wpilibj2.command.sysid.SysIdRoutine;
+import frc.robot.Constants.ArmConstants;
 import frc.robot.Constants.OperatorConstants;
 import frc.robot.commands.Arm.ArmCommand;
-import frc.robot.commands.Intake.IntakeCommand;
+import frc.robot.commands.Drive.AbsoluteFieldDrive;
+import frc.robot.commands.Intake.IntakeInCommand;
 import frc.robot.commands.Intake.IntakeOverrideCommand;
-import frc.robot.commands.Setpoints.IntakeSetpoint;
 import frc.robot.commands.Shooter.ShooterCommand;
-import frc.robot.commands.swervedrive.drivebase.AbsoluteDrive;
-import frc.robot.commands.swervedrive.drivebase.AbsoluteDriveAdv;
-import frc.robot.commands.swervedrive.drivebase.AbsoluteFieldDrive;
 import frc.robot.subsystems.ArmSubsystem;
 import frc.robot.subsystems.IntakeSubsystem;
 import frc.robot.subsystems.ShooterSubsystem;
-import frc.robot.subsystems.swervedrive.SwerveSubsystem;
+import frc.robot.subsystems.SwerveSubsystem;
+
 import java.io.File;
 
 import javax.management.OperationsException;
@@ -54,16 +53,16 @@ public class RobotContainer
   private final ShooterSubsystem m_shooterSubsystem = new ShooterSubsystem();
 
   // Replace with CommandPS4Controller or CommandJoystick if needed
-  final CommandXboxController driverXbox = new CommandXboxController(0);
+  final CommandXboxController driverXbox = new CommandXboxController(OperatorConstants.kDriverControllerPort);
   public CommandXboxController m_buttonBox = new CommandXboxController(OperatorConstants.kOperatorControllerPort);
+
   private final SendableChooser<Command> autoChooser;
 
   //Commands
-  IntakeSetpoint m_intakeSetpoint = new IntakeSetpoint(m_armSubsystem);
-  ArmCommand m_manualArmUpCommand = new ArmCommand(m_armSubsystem, 0.2);
-  ArmCommand m_manualArmDownCommand = new ArmCommand(m_armSubsystem, -0.2);
+  ArmCommand m_manualArmUpCommand = new ArmCommand(m_armSubsystem, ArmConstants.kArmUpSpeed);
+  ArmCommand m_manualArmDownCommand = new ArmCommand(m_armSubsystem, ArmConstants.kArmDownSpeed);
   ShooterCommand m_shooterCommand = new ShooterCommand(m_shooterSubsystem);
-  IntakeCommand m_intakeCommand = new IntakeCommand(m_intakeSubsystem);
+  IntakeInCommand m_intakeInCommand = new IntakeInCommand(m_intakeSubsystem);
   IntakeOverrideCommand m_intakeOverrideCommand = new IntakeOverrideCommand(m_intakeSubsystem);
 
   /**
@@ -74,13 +73,19 @@ public class RobotContainer
 
     NamedCommands.registerCommand("Intake in Override", Commands.runOnce(() -> m_intakeSubsystem.intakeSpeed(0.4)));
     NamedCommands.registerCommand("Intake Out", Commands.runOnce(() -> m_intakeSubsystem.intakeSpeed(-0.4)));
-    NamedCommands.registerCommand("Intake in BB", new IntakeCommand(m_intakeSubsystem).withTimeout(3));
+    NamedCommands.registerCommand("Intake in BB", new IntakeInCommand(m_intakeSubsystem).withTimeout(3));
+    NamedCommands.registerCommand("Intake Off", Commands.runOnce(m_intakeSubsystem::intakeOff));
+
+    // Shooter
     NamedCommands.registerCommand("Shooter On", Commands.runOnce(() -> m_shooterSubsystem.shooterOn(0.4)));
-    NamedCommands.registerCommand("Shooter Off", Commands.runOnce(() -> m_shooterSubsystem.shooterOff()));
-    NamedCommands.registerCommand("Intake Off", Commands.runOnce(() -> m_intakeSubsystem.intakeOff()));
-    NamedCommands.registerCommand("Arm to Shooter 1st Middle", Commands.runOnce(() -> m_armSubsystem.setReference(27)));
-    NamedCommands.registerCommand("Arm to Intake", Commands.runOnce(() -> m_armSubsystem.intakeSetpoint()));
-    NamedCommands.registerCommand("Arm to Shooter Middle Subwoofer", Commands.runOnce(() -> m_armSubsystem.shooterSetpoint()));
+    NamedCommands.registerCommand("Shooter Off", Commands.runOnce(m_shooterSubsystem::shooterOff));
+    
+    // Arm
+    NamedCommands.registerCommand("Arm to Shooter 1st Piece Middle", Commands.runOnce(() -> m_armSubsystem.setReference(27)));
+    NamedCommands.registerCommand("Arm to Intake", Commands.runOnce(m_armSubsystem::intakeSetpoint));
+    NamedCommands.registerCommand("Arm to Amp", Commands.runOnce(m_armSubsystem::ampSetpoint));
+    NamedCommands.registerCommand("Arm to Shooter Middle Subwoofer", Commands.runOnce(m_armSubsystem::shooterSetpoint));
+
 
     
     autoChooser = AutoBuilder.buildAutoChooser();
@@ -97,9 +102,9 @@ public class RobotContainer
 
     AbsoluteFieldDrive absoluteFieldDrive = new AbsoluteFieldDrive(
       drivebase, 
-      () -> MathUtil.applyDeadband(-driverXbox.getLeftY()*0.9, OperatorConstants.LEFT_Y_DEADBAND), 
-      () -> MathUtil.applyDeadband(-driverXbox.getLeftX()*0.9, OperatorConstants.LEFT_X_DEADBAND), 
-      () -> MathUtil.applyDeadband(-driverXbox.getRightX()*OperatorConstants.TURN_CONSTANT, OperatorConstants.RIGHT_X_DEADBAND));
+      () -> MathUtil.applyDeadband(-driverXbox.getLeftY()*OperatorConstants.TRANSLATION_Y_CONSTANT, OperatorConstants.LEFT_Y_DEADBAND), 
+      () -> MathUtil.applyDeadband(-driverXbox.getLeftX()*OperatorConstants.TRANSLATION_X_CONSTANT, OperatorConstants.LEFT_X_DEADBAND), 
+      () -> MathUtil.applyDeadband(-driverXbox.getRightX()*OperatorConstants.ROTATION_CONSTANT, OperatorConstants.RIGHT_X_DEADBAND));
 
 
     drivebase.setDefaultCommand(!RobotBase.isSimulation() ? absoluteFieldDrive : driveFieldOrientedDirectAngleSim);
@@ -117,19 +122,25 @@ public class RobotContainer
    */
   private void configureBindings()
   {
-    // Schedule `ExampleCommand` when `exampleCondition` changes to `true`
 
-    driverXbox.a().onTrue((Commands.runOnce(drivebase::zeroGyro)));
-    // driverXbox.x().onTrue(Commands.runOnce(drivebase::addFakeVisionReading));
-    // driverXbox.b().whileTrue(
-    //     Commands.deferredProxy(() -> drivebase.driveToPose(
-    //                                new Pose2d(new Translation2d(4, 4), Rotation2d.fromDegrees(0)))
-    //                           ));
+    // Controller Configs
+    driverXbox.a().onTrue(
+      Commands.runOnce(drivebase::zeroGyro)
+      );
 
+    driverXbox.rightTrigger().whileTrue(
+      m_shooterCommand
+    );
 
-    // driverXbox.x().whileTrue(Commands.runOnce(drivebase::lock, drivebase).repeatedly());
-    // driverXbox.y().whileTrue(Commands.deferredProxy(() -> drivebase.sysIdDriveMotorCommand()), drivebase.sysIdAngleMotorCommand());
+    driverXbox.leftTrigger().whileTrue(
+      m_intakeInCommand
+    );
 
+    driverXbox.b().whileTrue(
+      m_intakeOverrideCommand
+    );
+
+    // Button Box Configs
     m_buttonBox.button(1).whileTrue(
       m_manualArmDownCommand
     );
@@ -139,32 +150,21 @@ public class RobotContainer
     );
 
     m_buttonBox.button(4).whileTrue(
-      m_intakeSetpoint
+      Commands.runOnce(m_armSubsystem::intakeSetpoint)
     );
 
     m_buttonBox.button(6).whileTrue(
-      Commands.runOnce(() -> m_armSubsystem.shooterSetpoint())
+      Commands.runOnce(m_armSubsystem::shooterSetpoint)
     );
       
     m_buttonBox.button(5).whileTrue(
-      Commands.runOnce(() -> m_armSubsystem.ampSetpoint())
+      Commands.runOnce(m_armSubsystem::ampSetpoint)
     );
       
     m_buttonBox.leftTrigger().whileTrue(
       Commands.runOnce(() -> m_armSubsystem.setReference(27))
     );
 
-    driverXbox.rightTrigger().whileTrue(
-      m_shooterCommand
-    );
-
-    driverXbox.leftTrigger().whileTrue(
-      m_intakeCommand
-    );
-
-    driverXbox.b().whileTrue(
-      m_intakeOverrideCommand
-    );
   }
 
   /**

@@ -5,6 +5,7 @@
 package frc.robot.commands.Shooter;
 
 import edu.wpi.first.wpilibj2.command.Command;
+import frc.robot.Constants;
 import frc.robot.subsystems.ShooterSubsystem;
 
 public class ShooterCommand extends Command {
@@ -26,7 +27,7 @@ public class ShooterCommand extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    m_shooterSubsystem.shooterOn(0.4);
+    m_shooterSubsystem.shooterOn(Constants.ShooterConstants.kShooterSpeed);
     // if(YValue > 13 || YValue == 0) {
     //   m_shooterSubsystem.shooterOn(0.4);
     // } else m_shooterSubsystem.shooterOn(0.5);

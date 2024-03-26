@@ -60,10 +60,6 @@ public class ShooterSubsystem extends SubsystemBase {
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
-    
-    // Logger.recordOutput("Left Shooter Velocity", leftShooterVelocity().getValueAsDouble());
-    // Logger.recordOutput("Right Shooter Velocity", rightShooterVelocity().getValueAsDouble());
-
     m_velocity.Slot = 0;
 
   }
@@ -71,10 +67,6 @@ public class ShooterSubsystem extends SubsystemBase {
   public void shooterOn(double speed) {
     shooterMotorLeft.set(speed);
     shooterMotorRight.set(speed);
-  }
-
-  public InstantCommand shooterShoot(){
-    return new InstantCommand(() -> shooterOn(0.4), this);
   }
 
   public void shooterOff() {
