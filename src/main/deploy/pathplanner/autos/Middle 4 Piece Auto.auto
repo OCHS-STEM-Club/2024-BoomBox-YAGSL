@@ -1,0 +1,110 @@
+{
+  "version": 1.0,
+  "startingPose": {
+    "position": {
+      "x": 1.15,
+      "y": 5.55
+    },
+    "rotation": 0
+  },
+  "command": {
+    "type": "sequential",
+    "data": {
+      "commands": [
+        {
+          "type": "named",
+          "data": {
+            "name": "Arm to Shooter Middle Subwoofer"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "Shooter On"
+          }
+        },
+        {
+          "type": "wait",
+          "data": {
+            "waitTime": 1.0
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "Intake in Override"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "Arm to Intake"
+          }
+        },
+        {
+          "type": "parallel",
+          "data": {
+            "commands": [
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "Middle 1st Piece"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "Intake in BB"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "Arm to Shooter 1st Middle"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "Shooter On"
+          }
+        },
+        {
+          "type": "wait",
+          "data": {
+            "waitTime": 1.0
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "Intake in Override"
+          }
+        },
+        {
+          "type": "wait",
+          "data": {
+            "waitTime": 1.0
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "Shooter Off"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "Intake Off"
+          }
+        }
+      ]
+    }
+  },
+  "folder": null,
+  "choreoAuto": false
+}

@@ -3,7 +3,9 @@
   "robotLength": 0.51,
   "holonomicMode": true,
   "pathFolders": [
-    "New Folder"
+    "3 Piece Side Subwoofer Paths",
+    "Left 2 Piece Subwoofer Path",
+    "4 Piece Middle Auto"
   ],
   "autoFolders": [],
   "defaultMaxVel": 1.0,

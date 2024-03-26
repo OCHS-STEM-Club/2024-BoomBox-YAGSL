@@ -18,15 +18,24 @@ import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 import edu.wpi.first.wpilibj2.command.sysid.SysIdRoutine;
 import frc.robot.Constants.OperatorConstants;
+import frc.robot.commands.Arm.ArmCommand;
+import frc.robot.commands.Intake.IntakeCommand;
+import frc.robot.commands.Intake.IntakeOverrideCommand;
+import frc.robot.commands.Setpoints.IntakeSetpoint;
+import frc.robot.commands.Shooter.ShooterCommand;
 import frc.robot.commands.swervedrive.drivebase.AbsoluteDrive;
 import frc.robot.commands.swervedrive.drivebase.AbsoluteDriveAdv;
 import frc.robot.commands.swervedrive.drivebase.AbsoluteFieldDrive;
+import frc.robot.subsystems.ArmSubsystem;
+import frc.robot.subsystems.IntakeSubsystem;
+import frc.robot.subsystems.ShooterSubsystem;
 import frc.robot.subsystems.swervedrive.SwerveSubsystem;
 import java.io.File;
 
 import javax.management.OperationsException;
 
 import com.pathplanner.lib.auto.AutoBuilder;
+import com.pathplanner.lib.auto.NamedCommands;
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a "declarative" paradigm, very
@@ -40,53 +49,45 @@ public class RobotContainer
   // The robot's subsystems and commands are defined here...
   private final SwerveSubsystem drivebase = new SwerveSubsystem(new File(Filesystem.getDeployDirectory(),
                                                                          "swerve/neo"));
+  private final ArmSubsystem m_armSubsystem = new ArmSubsystem();
+  private final IntakeSubsystem m_intakeSubsystem = new IntakeSubsystem();
+  private final ShooterSubsystem m_shooterSubsystem = new ShooterSubsystem();
 
   // Replace with CommandPS4Controller or CommandJoystick if needed
   final CommandXboxController driverXbox = new CommandXboxController(0);
+  public CommandXboxController m_buttonBox = new CommandXboxController(OperatorConstants.kOperatorControllerPort);
   private final SendableChooser<Command> autoChooser;
+
+  //Commands
+  IntakeSetpoint m_intakeSetpoint = new IntakeSetpoint(m_armSubsystem);
+  ArmCommand m_manualArmUpCommand = new ArmCommand(m_armSubsystem, 0.2);
+  ArmCommand m_manualArmDownCommand = new ArmCommand(m_armSubsystem, -0.2);
+  ShooterCommand m_shooterCommand = new ShooterCommand(m_shooterSubsystem);
+  IntakeCommand m_intakeCommand = new IntakeCommand(m_intakeSubsystem);
+  IntakeOverrideCommand m_intakeOverrideCommand = new IntakeOverrideCommand(m_intakeSubsystem);
 
   /**
    * The container for the robot. Contains subsystems, OI devices, and commands.
    */
   public RobotContainer()
   {
+
+    NamedCommands.registerCommand("Intake in Override", Commands.runOnce(() -> m_intakeSubsystem.intakeSpeed(0.4)));
+    NamedCommands.registerCommand("Intake Out", Commands.runOnce(() -> m_intakeSubsystem.intakeSpeed(-0.4)));
+    NamedCommands.registerCommand("Intake in BB", new IntakeCommand(m_intakeSubsystem).withTimeout(3));
+    NamedCommands.registerCommand("Shooter On", Commands.runOnce(() -> m_shooterSubsystem.shooterOn(0.4)));
+    NamedCommands.registerCommand("Shooter Off", Commands.runOnce(() -> m_shooterSubsystem.shooterOff()));
+    NamedCommands.registerCommand("Intake Off", Commands.runOnce(() -> m_intakeSubsystem.intakeOff()));
+    NamedCommands.registerCommand("Arm to Shooter 1st Middle", Commands.runOnce(() -> m_armSubsystem.setReference(27)));
+    NamedCommands.registerCommand("Arm to Intake", Commands.runOnce(() -> m_armSubsystem.intakeSetpoint()));
+    NamedCommands.registerCommand("Arm to Shooter Middle Subwoofer", Commands.runOnce(() -> m_armSubsystem.shooterSetpoint()));
+
     
     autoChooser = AutoBuilder.buildAutoChooser();
     // Configure the trigger bindings
     configureBindings();
 
-    AbsoluteDriveAdv closedAbsoluteDriveAdv = new AbsoluteDriveAdv(drivebase,
-                                                                   () -> -MathUtil.applyDeadband(driverXbox.getLeftY(),
-                                                                                                OperatorConstants.LEFT_Y_DEADBAND),
-                                                                   () -> -MathUtil.applyDeadband(driverXbox.getLeftX(),
-                                                                                                OperatorConstants.LEFT_X_DEADBAND),
-                                                                   () -> -MathUtil.applyDeadband(driverXbox.getRightX(),
-                                                                                                OperatorConstants.RIGHT_X_DEADBAND),
-                                                                   driverXbox.getHID()::getYButtonPressed,
-                                                                   driverXbox.getHID()::getAButtonPressed,
-                                                                   driverXbox.getHID()::getXButtonPressed,
-                                                                   driverXbox.getHID()::getBButtonPressed);
     
-    // Applies deadbands and inverts controls because joysticks
-    // are back-right positive while robot
-    // controls are front-left positive
-    // left stick controls translation
-    // right stick controls the desired angle NOT angular rotation
-    Command driveFieldOrientedDirectAngle = drivebase.driveDesiredAngleCommand(
-        () -> MathUtil.applyDeadband(driverXbox.getLeftY(), OperatorConstants.LEFT_Y_DEADBAND),
-        () -> MathUtil.applyDeadband(driverXbox.getLeftX(), OperatorConstants.LEFT_X_DEADBAND),
-        () -> driverXbox.getRightX(),
-        () -> driverXbox.getRightY());
-
-    // Applies deadbands and inverts controls because joysticks
-    // are back-right positive while robot
-    // controls are front-left positive
-    // left stick controls translation
-    // right stick controls the angular velocity of the robot
-    Command driveFieldOrientedAnglularVelocity = drivebase.driveAngularRotationCommand(
-        () -> MathUtil.applyDeadband(driverXbox.getLeftY(), OperatorConstants.LEFT_Y_DEADBAND),
-        () -> MathUtil.applyDeadband(driverXbox.getLeftX(), OperatorConstants.LEFT_X_DEADBAND),
-        () -> driverXbox.getRightX());
 
     Command driveFieldOrientedDirectAngleSim = drivebase.simDriveCommand(
         () -> MathUtil.applyDeadband(driverXbox.getLeftY(), OperatorConstants.LEFT_Y_DEADBAND),
@@ -96,27 +97,15 @@ public class RobotContainer
 
     AbsoluteFieldDrive absoluteFieldDrive = new AbsoluteFieldDrive(
       drivebase, 
-      () -> MathUtil.applyDeadband(driverXbox.getLeftY()*0.9, OperatorConstants.LEFT_Y_DEADBAND), 
-      () -> MathUtil.applyDeadband(driverXbox.getLeftX()*0.9, OperatorConstants.LEFT_X_DEADBAND), 
-      () -> MathUtil.applyDeadband(driverXbox.getRightX()*OperatorConstants.TURN_CONSTANT, OperatorConstants.RIGHT_X_DEADBAND));
+      () -> MathUtil.applyDeadband(-driverXbox.getLeftY()*0.9, OperatorConstants.LEFT_Y_DEADBAND), 
+      () -> MathUtil.applyDeadband(-driverXbox.getLeftX()*0.9, OperatorConstants.LEFT_X_DEADBAND), 
+      () -> MathUtil.applyDeadband(-driverXbox.getRightX()*OperatorConstants.TURN_CONSTANT, OperatorConstants.RIGHT_X_DEADBAND));
 
-    AbsoluteDrive absoluteDrive = new AbsoluteDrive(
-      drivebase, 
-      () -> MathUtil.applyDeadband(driverXbox.getLeftY(), OperatorConstants.LEFT_Y_DEADBAND), 
-      () -> MathUtil.applyDeadband(driverXbox.getLeftX(), OperatorConstants.LEFT_X_DEADBAND), 
-      () -> MathUtil.applyDeadband(Math.cos(driverXbox.getRightX())*OperatorConstants.TURN_CONSTANT, OperatorConstants.RIGHT_X_DEADBAND),
-      () -> MathUtil.applyDeadband(Math.sin(driverXbox.getRightX())*OperatorConstants.TURN_CONSTANT, OperatorConstants.RIGHT_X_DEADBAND));
-
-
-    // Command driveFieldOrientedBoomBox = drivebase.driveAngularRotationCommand(
-    //     () -> driverXbox.getLeftY(),
-    //     () -> driverXbox.getLeftX(), 
-    //     () -> driverXbox.getRightX());
 
     drivebase.setDefaultCommand(!RobotBase.isSimulation() ? absoluteFieldDrive : driveFieldOrientedDirectAngleSim);
-    // drivebase.setDefaultCommand(drivebase.driveCommand(() -> -driverXbox.getLeftY() *2, () -> driverXbox.getLeftX() *2, () -> -driverXbox.getRightX() *2));
     
     SmartDashboard.putData("Autos", autoChooser);
+
   }
 
   /**
@@ -130,7 +119,7 @@ public class RobotContainer
   {
     // Schedule `ExampleCommand` when `exampleCondition` changes to `true`
 
-    // driverXbox.a().onTrue((Commands.runOnce(drivebase::zeroGyro)));
+    driverXbox.a().onTrue((Commands.runOnce(drivebase::zeroGyro)));
     // driverXbox.x().onTrue(Commands.runOnce(drivebase::addFakeVisionReading));
     // driverXbox.b().whileTrue(
     //     Commands.deferredProxy(() -> drivebase.driveToPose(
@@ -140,6 +129,42 @@ public class RobotContainer
 
     // driverXbox.x().whileTrue(Commands.runOnce(drivebase::lock, drivebase).repeatedly());
     // driverXbox.y().whileTrue(Commands.deferredProxy(() -> drivebase.sysIdDriveMotorCommand()), drivebase.sysIdAngleMotorCommand());
+
+    m_buttonBox.button(1).whileTrue(
+      m_manualArmDownCommand
+    );
+
+    m_buttonBox.button(3).whileTrue(
+      m_manualArmUpCommand
+    );
+
+    m_buttonBox.button(4).whileTrue(
+      m_intakeSetpoint
+    );
+
+    m_buttonBox.button(6).whileTrue(
+      Commands.runOnce(() -> m_armSubsystem.shooterSetpoint())
+    );
+      
+    m_buttonBox.button(5).whileTrue(
+      Commands.runOnce(() -> m_armSubsystem.ampSetpoint())
+    );
+      
+    m_buttonBox.leftTrigger().whileTrue(
+      Commands.runOnce(() -> m_armSubsystem.setReference(27))
+    );
+
+    driverXbox.rightTrigger().whileTrue(
+      m_shooterCommand
+    );
+
+    driverXbox.leftTrigger().whileTrue(
+      m_intakeCommand
+    );
+
+    driverXbox.b().whileTrue(
+      m_intakeOverrideCommand
+    );
   }
 
   /**
@@ -153,13 +178,15 @@ public class RobotContainer
     return autoChooser.getSelected();
   }
 
-  public void setDriveMode()
-  {
+  public void setDriveMode() {
     //drivebase.setDefaultCommand();
   }
 
-  public void setMotorBrake(boolean brake)
-  {
+  public void setMotorBrake(boolean brake) {
     drivebase.setMotorBrake(brake);
+  }
+
+  public void zeroGyro() {
+    drivebase.zeroGyro();
   }
 }
