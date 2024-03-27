@@ -26,6 +26,8 @@ import edu.wpi.first.wpilibj2.command.sysid.SysIdRoutine.Config;
 import frc.robot.Constants.AutonConstants;
 import java.io.File;
 import java.util.function.DoubleSupplier;
+
+import org.littletonrobotics.junction.Logger;
 import org.photonvision.PhotonCamera;
 import org.photonvision.targeting.PhotonPipelineResult;
 import swervelib.SwerveController;
@@ -333,6 +335,10 @@ public class SwerveSubsystem extends SubsystemBase
   @Override
   public void periodic()
   {
+
+    Logger.recordOutput("Robot Angle", getHeading());
+    Logger.recordOutput("Robot Pose", getPose());
+   
   }
 
   @Override

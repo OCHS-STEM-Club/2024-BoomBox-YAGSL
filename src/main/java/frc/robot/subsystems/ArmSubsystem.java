@@ -4,6 +4,8 @@
 
 package frc.robot.subsystems;
 
+import org.littletonrobotics.junction.Logger;
+
 import com.revrobotics.AbsoluteEncoder;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.RelativeEncoder;
@@ -83,7 +85,9 @@ public class ArmSubsystem extends SubsystemBase {
 
     // This method will be called once per scheduler run
     //System.out.println(thru.getAbsolutePosition());
-    //SmartDashboard.putNumber("PID shooter setpoint value", pid.calculate(thru.getAbsolutePosition()));
+    Logger.recordOutput("Left Arm Motor", armMotorLeft.get());
+    Logger.recordOutput("Right Arm Motor", armMotorRight.get());
+    Logger.recordOutput("Arm Encoder", m_encoder.getPosition());
 
     SmartDashboard.putNumber("Arm Encoder", m_encoder.getPosition());
 

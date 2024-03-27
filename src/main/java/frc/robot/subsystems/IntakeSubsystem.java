@@ -4,6 +4,9 @@
 
 package frc.robot.subsystems;
 
+import org.littletonrobotics.junction.Logger;
+
+// import com.ctre.phoenix.Logger;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkLowLevel.MotorType;
 import com.revrobotics.CANSparkLowLevel.PeriodicFrame;
@@ -39,6 +42,9 @@ public class IntakeSubsystem extends SubsystemBase {
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
+    Logger.recordOutput("Intake Speed", intakeMotor.get());
+    Logger.recordOutput("Beam Break", beamBreakSensor());
+    
   }
 
   public void intakeSpeed(double speed){

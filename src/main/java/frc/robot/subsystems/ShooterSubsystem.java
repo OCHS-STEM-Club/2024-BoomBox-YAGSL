@@ -4,6 +4,8 @@
 
 package frc.robot.subsystems;
 
+import org.littletonrobotics.junction.Logger;
+
 import com.ctre.phoenix6.StatusSignal;
 import com.ctre.phoenix6.configs.TalonFXConfiguration;
 import com.ctre.phoenix6.controls.MotionMagicVoltage;
@@ -61,6 +63,8 @@ public class ShooterSubsystem extends SubsystemBase {
   public void periodic() {
     // This method will be called once per scheduler run
     m_velocity.Slot = 0;
+    Logger.recordOutput("Left Shooter Velocity", shooterMotorLeft.getVelocity().getValueAsDouble());
+    Logger.recordOutput("Right Shooter Velocity", shooterMotorRight.getVelocity().getValueAsDouble());
 
   }
 
