@@ -2,10 +2,10 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 1.67,
-      "y": 4.39
+      "x": 1.58,
+      "y": 3.77
     },
-    "rotation": -45.0
+    "rotation": 0
   },
   "command": {
     "type": "sequential",
@@ -14,7 +14,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "Shoot To Middle"
+            "pathName": "Path"
           }
         }
       ]

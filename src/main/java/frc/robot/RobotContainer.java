@@ -73,8 +73,9 @@ public class RobotContainer
 
     NamedCommands.registerCommand("Intake in Override", Commands.runOnce(() -> m_intakeSubsystem.intakeSpeed(0.4)));
     NamedCommands.registerCommand("Intake Out", Commands.runOnce(() -> m_intakeSubsystem.intakeSpeed(-0.4)));
-    NamedCommands.registerCommand("Intake in BB", new IntakeInCommand(m_intakeSubsystem).withTimeout(2));
+    NamedCommands.registerCommand("Intake in BB", new IntakeInCommand(m_intakeSubsystem));
     NamedCommands.registerCommand("Intake Off", Commands.runOnce(m_intakeSubsystem::intakeOff));
+    NamedCommands.registerCommand("Intake In BB w/o Timeout", new IntakeInCommand(m_intakeSubsystem));
 
     // Shooter
     NamedCommands.registerCommand("Shooter On", Commands.runOnce(() -> m_shooterSubsystem.shooterOn(0.4)));
@@ -82,9 +83,12 @@ public class RobotContainer
     
     // Arm
     NamedCommands.registerCommand("Arm to Shooter 1st Piece Middle", Commands.runOnce(() -> m_armSubsystem.setReference(27)));
+    NamedCommands.registerCommand("Arm to Shooter Sides", Commands.runOnce(() -> m_armSubsystem.setReference(7)));
     NamedCommands.registerCommand("Arm to Intake", Commands.runOnce(m_armSubsystem::intakeSetpoint));
     NamedCommands.registerCommand("Arm to Amp", Commands.runOnce(m_armSubsystem::ampSetpoint));
     NamedCommands.registerCommand("Arm to Shooter Subwoofer", Commands.runOnce(m_armSubsystem::shooterSetpoint));
+    NamedCommands.registerCommand("Arm to Shooter Side Source 1st Piece", Commands.runOnce(() -> m_armSubsystem.setReference(26.5)));
+
 
 
     
@@ -140,6 +144,10 @@ public class RobotContainer
       m_intakeOverrideCommand
     );
 
+    driverXbox.y().whileTrue(
+      drivebase.driveToPose(new Pose2d(new Translation2d(1.15,5.55),new Rotation2d(0)))
+    );
+
     // Button Box Configs
     m_buttonBox.button(1).whileTrue(
       m_manualArmDownCommand
@@ -162,7 +170,12 @@ public class RobotContainer
     );
       
     m_buttonBox.leftTrigger().whileTrue(
-      Commands.runOnce(() -> m_armSubsystem.setReference(27))
+      Commands.runOnce(() -> m_armSubsystem.setReference(26.5))
+
+    );
+
+    m_buttonBox.b().whileTrue(
+      Commands.runOnce(() -> m_armSubsystem.setReferenceSD())
     );
 
   }

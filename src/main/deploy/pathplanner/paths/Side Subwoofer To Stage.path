@@ -8,19 +8,19 @@
       },
       "prevControl": null,
       "nextControl": {
-        "x": 0.9700157640548278,
-        "y": 4.1900455509597005
+        "x": 0.9474609420613941,
+        "y": 4.176759745468216
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 2.5202357965343594,
+        "x": 2.48,
         "y": 3.9348410793825868
       },
       "prevControl": {
-        "x": 1.5365255266887121,
+        "x": 1.5,
         "y": 3.9348410793825868
       },
       "nextControl": null,
@@ -49,7 +49,7 @@
     "rotateFast": false
   },
   "reversed": false,
-  "folder": "3 Piece Side Subwoofer Paths",
+  "folder": "3 Piece Source Side Subwoofer Auto",
   "previewStartingState": {
     "rotation": 0,
     "velocity": 0

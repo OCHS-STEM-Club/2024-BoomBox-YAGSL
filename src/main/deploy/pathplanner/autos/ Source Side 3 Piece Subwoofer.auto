@@ -24,7 +24,7 @@
               {
                 "type": "named",
                 "data": {
-                  "name": "Arm to Shooter Subwoofer"
+                  "name": "Arm to Shooter Sides"
                 }
               }
             ]
@@ -33,7 +33,7 @@
         {
           "type": "wait",
           "data": {
-            "waitTime": 0.5
+            "waitTime": 1.5
           }
         },
         {
@@ -80,6 +80,12 @@
           }
         },
         {
+          "type": "named",
+          "data": {
+            "name": "Intake in BB"
+          }
+        },
+        {
           "type": "parallel",
           "data": {
             "commands": [
@@ -88,8 +94,44 @@
                 "data": {
                   "pathName": "Stage To Shoot"
                 }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "Arm to Shooter Side Source 1st Piece"
+                }
               }
             ]
+          }
+        },
+        {
+          "type": "wait",
+          "data": {
+            "waitTime": 0.5
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "Intake in Override"
+          }
+        },
+        {
+          "type": "wait",
+          "data": {
+            "waitTime": 0.5
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "Shooter Off"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "Intake Off"
           }
         }
       ]

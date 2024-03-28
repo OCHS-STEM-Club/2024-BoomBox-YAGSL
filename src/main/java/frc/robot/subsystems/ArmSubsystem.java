@@ -39,6 +39,7 @@ public class ArmSubsystem extends SubsystemBase {
   private AbsoluteEncoder m_encoder;
 
   private double speed;
+  private double value;
 
   public ArmSubsystem() {
     armMotorLeft = new CANSparkMax(Constants.ArmConstants.kArmMotorLeftID, MotorType.kBrushless);
@@ -78,6 +79,8 @@ public class ArmSubsystem extends SubsystemBase {
     armMotorLeft.setPeriodicFramePeriod(PeriodicFrame.kStatus6, 100);
 
     armMotorLeft.follow(armMotorRight);
+
+    SmartDashboard.putNumber("Arm PID Value", 0);
   }
 
   @Override
@@ -92,7 +95,10 @@ public class ArmSubsystem extends SubsystemBase {
     SmartDashboard.putNumber("Arm Encoder", m_encoder.getPosition());
 
     SmartDashboard.putNumber("Built-In Right Encoder", armMotorRight.getEncoder().getPosition());
+
+    value = SmartDashboard.getNumber("Arm PID", 0);
   }
+
 
   public void armUp() {
     armMotorLeft.set(Constants.ArmConstants.kArmUpSpeed);
@@ -125,6 +131,10 @@ public class ArmSubsystem extends SubsystemBase {
 
   public void setReference(double pidReference) {
     m_pidController.setReference(pidReference,CANSparkMax.ControlType.kPosition);
+  }
+
+  public void setReferenceSD() {
+    m_pidController.setReference(value ,CANSparkMax.ControlType.kPosition);
   }
 
 

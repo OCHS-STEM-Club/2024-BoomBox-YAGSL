@@ -45,7 +45,10 @@ public class IntakeInCommand extends Command {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
+   if(m_intakeSubsystem.beamBreakSensor() == true) {
     return false;
+   }
+   else return true;
   }
 }
 
