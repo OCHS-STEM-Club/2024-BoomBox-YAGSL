@@ -2,10 +2,10 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 0.71,
-      "y": 4.61
+      "x": 1.58,
+      "y": 3.22
     },
-    "rotation": -58.0
+    "rotation": 0
   },
   "command": {
     "type": "sequential",
@@ -18,13 +18,19 @@
               {
                 "type": "named",
                 "data": {
-                  "name": "Shooter On"
+                  "name": "Arm to Shooter Side Source 1st Piece Test"
                 }
               },
               {
                 "type": "named",
                 "data": {
-                  "name": "Arm to Shooter Sides"
+                  "name": "Shooter On"
+                }
+              },
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "1st Piece"
                 }
               }
             ]
@@ -33,7 +39,7 @@
         {
           "type": "wait",
           "data": {
-            "waitTime": 2.0
+            "waitTime": 1.5
           }
         },
         {
@@ -57,7 +63,7 @@
         {
           "type": "wait",
           "data": {
-            "waitTime": 0.5
+            "waitTime": 1.0
           }
         },
         {
@@ -65,15 +71,21 @@
           "data": {
             "commands": [
               {
+                "type": "named",
+                "data": {
+                  "name": "Intake in BB"
+                }
+              },
+              {
                 "type": "path",
                 "data": {
-                  "pathName": "Side Subwoofer To Stage"
+                  "pathName": "2nd Piece"
                 }
               },
               {
                 "type": "named",
                 "data": {
-                  "name": "Intake in BB"
+                  "name": "Arm to Intake"
                 }
               }
             ]
@@ -92,13 +104,13 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "Stage To Shoot"
+                  "pathName": "2nd Piece Back"
                 }
               },
               {
                 "type": "named",
                 "data": {
-                  "name": "Arm to Shooter Side Source 1st Piece"
+                  "name": "Arm to Shooter Side Source 1st Piece Test"
                 }
               }
             ]
@@ -107,7 +119,7 @@
         {
           "type": "wait",
           "data": {
-            "waitTime": 0.5
+            "waitTime": 1.0
           }
         },
         {
@@ -125,13 +137,13 @@
         {
           "type": "named",
           "data": {
-            "name": "Shooter Off"
+            "name": "Intake Off"
           }
         },
         {
           "type": "named",
           "data": {
-            "name": "Intake Off"
+            "name": "Shooter Off"
           }
         }
       ]

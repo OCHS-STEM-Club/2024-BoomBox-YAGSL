@@ -22,6 +22,7 @@ import frc.robot.Constants.OperatorConstants;
 import frc.robot.commands.Arm.ArmCommand;
 import frc.robot.commands.Drive.AbsoluteFieldDrive;
 import frc.robot.commands.Intake.IntakeInCommand;
+import frc.robot.commands.Intake.IntakeOutCommand;
 import frc.robot.commands.Intake.IntakeOverrideCommand;
 import frc.robot.commands.Shooter.ShooterCommand;
 import frc.robot.subsystems.ArmSubsystem;
@@ -64,6 +65,7 @@ public class RobotContainer
   ShooterCommand m_shooterCommand = new ShooterCommand(m_shooterSubsystem);
   IntakeInCommand m_intakeInCommand = new IntakeInCommand(m_intakeSubsystem);
   IntakeOverrideCommand m_intakeOverrideCommand = new IntakeOverrideCommand(m_intakeSubsystem);
+  IntakeOutCommand m_intakeOutCommand = new IntakeOutCommand(m_intakeSubsystem);
 
   /**
    * The container for the robot. Contains subsystems, OI devices, and commands.
@@ -88,6 +90,7 @@ public class RobotContainer
     NamedCommands.registerCommand("Arm to Amp", Commands.runOnce(m_armSubsystem::ampSetpoint));
     NamedCommands.registerCommand("Arm to Shooter Subwoofer", Commands.runOnce(m_armSubsystem::shooterSetpoint));
     NamedCommands.registerCommand("Arm to Shooter Side Source 1st Piece", Commands.runOnce(() -> m_armSubsystem.setReference(26.5)));
+    NamedCommands.registerCommand("Arm to Shooter Side Source 1st Piece Test", Commands.runOnce(() -> m_armSubsystem.setReference(23)));
 
 
 
@@ -144,6 +147,10 @@ public class RobotContainer
       m_intakeOverrideCommand
     );
 
+    driverXbox.leftBumper().whileTrue(
+      m_intakeOutCommand
+    );
+
     driverXbox.y().whileTrue(
       drivebase.driveToPose(new Pose2d(new Translation2d(1.15,5.55),new Rotation2d(0)))
     );
@@ -176,6 +183,7 @@ public class RobotContainer
 
     m_buttonBox.b().whileTrue(
       Commands.runOnce(() -> m_armSubsystem.setReferenceSD())
+      
     );
 
   }

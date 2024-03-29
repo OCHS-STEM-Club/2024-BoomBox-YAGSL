@@ -80,7 +80,7 @@ public class ArmSubsystem extends SubsystemBase {
 
     armMotorLeft.follow(armMotorRight);
 
-    SmartDashboard.putNumber("Arm PID Value", 0);
+    SmartDashboard.putNumber("Arm PID Value", 23);
   }
 
   @Override

@@ -3,9 +3,10 @@
   "robotLength": 0.51,
   "holonomicMode": true,
   "pathFolders": [
+    "2 Piece Amp Side Subwoofer Auto",
     "3 Piece Source Side Subwoofer Auto",
     "4 Piece Middle Subwoofer Auto",
-    "2 Piece Amp Side Subwoofer Auto"
+    "3 Piece Source Side Subwoofer Test"
   ],
   "autoFolders": [],
   "defaultMaxVel": 3.81,
