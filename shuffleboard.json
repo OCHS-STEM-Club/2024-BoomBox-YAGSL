@@ -1,9 +1,9 @@
 {
   "tabPane": [
     {
-      "title": "SmartDashboard",
-      "autoPopulate": true,
-      "autoPopulatePrefix": "SmartDashboard/",
+      "title": "Main",
+      "autoPopulate": false,
+      "autoPopulatePrefix": " ",
       "widgetPane": {
         "gridSize": 128.0,
         "showGrid": true,
@@ -42,31 +42,31 @@
           },
           "2,3": {
             "size": [
-              1,
+              2,
               1
             ],
             "content": {
               "_type": "Text View",
               "_source0": "network_table:///SmartDashboard/swerve/robotRotation",
-              "_title": "swerve/robotRotation",
+              "_title": "Heading",
               "_glyph": 148,
               "_showGlyph": false
             }
           },
           "4,0": {
             "size": [
-              5,
+              6,
               3
             ],
             "content": {
               "_type": "Camera Stream",
               "_source0": "camera_server://limelight-boombox",
-              "_title": "limelight-boombox",
+              "_title": "Limelight",
               "_glyph": 148,
               "_showGlyph": false,
-              "Crosshair/Show crosshair": true,
+              "Crosshair/Show crosshair": false,
               "Crosshair/Crosshair color": "#FFFFFFFF",
-              "Controls/Show controls": true,
+              "Controls/Show controls": false,
               "Controls/Rotation": "NONE",
               "compression": -1.0,
               "fps": -1,
@@ -74,87 +74,22 @@
               "imageHeight": -1
             }
           },
-          "3,3": {
-            "size": [
-              1,
-              1
-            ],
-            "content": {
-              "_type": "Text View",
-              "_source0": "network_table:///AdvantageKit/RealOutputs/Arm Encoder",
-              "_title": "/AdvantageKit/RealOutputs/Arm Encoder",
-              "_glyph": 148,
-              "_showGlyph": false
-            }
-          },
-          "9,0": {
-            "size": [
-              1,
-              1
-            ],
-            "content": {
-              "_type": "Text View",
-              "_source0": "network_table:///SmartDashboard/limelight-boombox_Interface",
-              "_title": "limelight-boombox_Interface",
-              "_glyph": 148,
-              "_showGlyph": false
-            }
-          },
-          "9,1": {
-            "size": [
-              1,
-              1
-            ],
-            "content": {
-              "_type": "Text View",
-              "_source0": "network_table:///SmartDashboard/limelight-boombox_Stream",
-              "_title": "limelight-boombox_Stream",
-              "_glyph": 148,
-              "_showGlyph": false
-            }
-          },
-          "9,2": {
-            "size": [
-              1,
-              1
-            ],
-            "content": {
-              "_type": "Text View",
-              "_source0": "network_table:///SmartDashboard/limelight-boombox_PipelineName",
-              "_title": "limelight-boombox_PipelineName",
-              "_glyph": 148,
-              "_showGlyph": false
-            }
-          },
-          "8,3": {
-            "size": [
-              1,
-              1
-            ],
-            "content": {
-              "_type": "Text View",
-              "_source0": "network_table:///SmartDashboard/Module[frontleft] Raw Angle Encoder",
-              "_title": "Module[frontleft] Raw Angle Encoder",
-              "_glyph": 148,
-              "_showGlyph": false
-            }
-          },
-          "9,3": {
-            "size": [
-              1,
-              1
-            ],
-            "content": {
-              "_type": "Text View",
-              "_source0": "network_table:///SmartDashboard/Module[frontleft] Raw Drive Encoder",
-              "_title": "Module[frontleft] Raw Drive Encoder",
-              "_glyph": 148,
-              "_showGlyph": false
-            }
-          },
           "4,3": {
             "size": [
-              1,
+              2,
+              1
+            ],
+            "content": {
+              "_type": "Text View",
+              "_source0": "network_table:///SmartDashboard/Arm Encoder",
+              "_title": "/SmartDashboard/Arm Encoder",
+              "_glyph": 148,
+              "_showGlyph": false
+            }
+          },
+          "6,3": {
+            "size": [
+              2,
               1
             ],
             "content": {
@@ -165,171 +100,30 @@
               "_showGlyph": false
             }
           },
-          "5,3": {
+          "9,3": {
             "size": [
               1,
               1
             ],
             "content": {
-              "_type": "Text View",
-              "_source0": "network_table:///SmartDashboard/LimitedTranslation",
-              "_title": "LimitedTranslation",
+              "_type": "Boolean Box",
+              "_source0": "network_table:///SmartDashboard/Tuning Mode",
+              "_title": "SmartDashboard/Tuning Mode",
               "_glyph": 148,
-              "_showGlyph": false
+              "_showGlyph": false,
+              "Colors/Color when true": "#7CFC00FF",
+              "Colors/Color when false": "#8B0000FF"
             }
           },
-          "6,3": {
+          "8,3": {
             "size": [
               1,
               1
             ],
             "content": {
-              "_type": "Text View",
-              "_source0": "network_table:///SmartDashboard/Translation",
-              "_title": "Translation",
-              "_glyph": 148,
-              "_showGlyph": false
-            }
-          },
-          "7,3": {
-            "size": [
-              1,
-              1
-            ],
-            "content": {
-              "_type": "Text View",
-              "_source0": "network_table:///SmartDashboard/RobotVelocity",
-              "_title": "RobotVelocity",
-              "_glyph": 148,
-              "_showGlyph": false
-            }
-          },
-          "0,4": {
-            "size": [
-              1,
-              1
-            ],
-            "content": {
-              "_type": "Text View",
-              "_source0": "network_table:///SmartDashboard/Pigeon 2 (v6) [1]/Value",
-              "_title": "Pigeon 2 (v6) [1]/Value",
-              "_glyph": 148,
-              "_showGlyph": false
-            }
-          },
-          "1,4": {
-            "size": [
-              1,
-              1
-            ],
-            "content": {
-              "_type": "Text View",
-              "_source0": "network_table:///SmartDashboard/Module[frontleft] Raw Absolute Encoder",
-              "_title": "Module[frontleft] Raw Absolute Encoder",
-              "_glyph": 148,
-              "_showGlyph": false
-            }
-          },
-          "2,4": {
-            "size": [
-              1,
-              1
-            ],
-            "content": {
-              "_type": "Text View",
-              "_source0": "network_table:///SmartDashboard/Module[frontleft] Adjusted Absolute Encoder",
-              "_title": "Module[frontleft] Adjusted Absolute Encoder",
-              "_glyph": 148,
-              "_showGlyph": false
-            }
-          },
-          "3,4": {
-            "size": [
-              1,
-              1
-            ],
-            "content": {
-              "_type": "Text View",
-              "_source0": "network_table:///SmartDashboard/Module[frontleft] Absolute Encoder Read Issue",
-              "_title": "Module[frontleft] Absolute Encoder Read Issue",
-              "_glyph": 148,
-              "_showGlyph": false
-            }
-          },
-          "4,4": {
-            "size": [
-              1,
-              1
-            ],
-            "content": {
-              "_type": "Text View",
-              "_source0": "network_table:///SmartDashboard/Raw IMU Yaw",
-              "_title": "Raw IMU Yaw",
-              "_glyph": 148,
-              "_showGlyph": false
-            }
-          },
-          "5,4": {
-            "size": [
-              1,
-              1
-            ],
-            "content": {
-              "_type": "Text View",
-              "_source0": "network_table:///SmartDashboard/Adjusted IMU Yaw",
-              "_title": "Adjusted IMU Yaw",
-              "_glyph": 148,
-              "_showGlyph": false
-            }
-          },
-          "6,4": {
-            "size": [
-              1,
-              1
-            ],
-            "content": {
-              "_type": "Text View",
-              "_source0": "network_table:///SmartDashboard/Module[frontright] Raw Absolute Encoder",
-              "_title": "Module[frontright] Raw Absolute Encoder",
-              "_glyph": 148,
-              "_showGlyph": false
-            }
-          },
-          "7,4": {
-            "size": [
-              1,
-              1
-            ],
-            "content": {
-              "_type": "Text View",
-              "_source0": "network_table:///SmartDashboard/Module[frontright] Raw Angle Encoder",
-              "_title": "Module[frontright] Raw Angle Encoder",
-              "_glyph": 148,
-              "_showGlyph": false
-            }
-          },
-          "8,4": {
-            "size": [
-              1,
-              1
-            ],
-            "content": {
-              "_type": "Text View",
-              "_source0": "network_table:///SmartDashboard/Module[frontright] Raw Drive Encoder",
-              "_title": "Module[frontright] Raw Drive Encoder",
-              "_glyph": 148,
-              "_showGlyph": false
-            }
-          },
-          "9,4": {
-            "size": [
-              1,
-              1
-            ],
-            "content": {
-              "_type": "Text View",
-              "_source0": "network_table:///SmartDashboard/Module[frontright] Adjusted Absolute Encoder",
-              "_title": "Module[frontright] Adjusted Absolute Encoder",
+              "_type": "Toggle Switch",
+              "_source0": "network_table:///SmartDashboard/Tuning Mode",
+              "_title": "SmartDashboard/Tuning Mode",
               "_glyph": 148,
               "_showGlyph": false
             }
@@ -349,25 +143,12 @@
         "titleType": 0,
         "tiles": {}
       }
-    },
-    {
-      "title": "Tab 3",
-      "autoPopulate": false,
-      "autoPopulatePrefix": "",
-      "widgetPane": {
-        "gridSize": 128.0,
-        "showGrid": true,
-        "hgap": 16.0,
-        "vgap": 16.0,
-        "titleType": 0,
-        "tiles": {}
-      }
     }
   ],
   "windowGeometry": {
-    "x": 0.800000011920929,
-    "y": 0.800000011920929,
-    "width": 1534.4000244140625,
-    "height": 814.4000244140625
+    "x": -7.199999809265137,
+    "y": -7.199999809265137,
+    "width": 1550.4000244140625,
+    "height": 878.4000244140625
   }
 }

@@ -20,6 +20,10 @@ import edu.wpi.first.wpilibj2.command.sysid.SysIdRoutine;
 import frc.robot.Constants.ArmConstants;
 import frc.robot.Constants.OperatorConstants;
 import frc.robot.commands.Arm.ArmCommand;
+import frc.robot.commands.Climber.ClimberDownCommand;
+import frc.robot.commands.Climber.ClimberDownOverrideCmd;
+import frc.robot.commands.Climber.ClimberUpCommand;
+import frc.robot.commands.Climber.ClimberUpOverrideCmd;
 import frc.robot.commands.Drive.AbsoluteFieldDrive;
 import frc.robot.commands.Intake.IntakeInCommand;
 import frc.robot.commands.Intake.IntakeOutCommand;
@@ -68,6 +72,10 @@ public class RobotContainer
   IntakeInCommand m_intakeInCommand = new IntakeInCommand(m_intakeSubsystem);
   IntakeOverrideCommand m_intakeOverrideCommand = new IntakeOverrideCommand(m_intakeSubsystem);
   IntakeOutCommand m_intakeOutCommand = new IntakeOutCommand(m_intakeSubsystem);
+  ClimberDownOverrideCmd m_ClimberDownOverrideCmd = new ClimberDownOverrideCmd(m_climberSubsystem);
+  ClimberUpOverrideCmd m_climberUpOverrideCmd = new ClimberUpOverrideCmd(m_climberSubsystem);
+  ClimberDownCommand m_climberDownCommand = new ClimberDownCommand(m_climberSubsystem);
+  ClimberUpCommand m_climberUpCommand = new ClimberUpCommand(m_climberSubsystem);
 
   /**
    * The container for the robot. Contains subsystems, OI devices, and commands.
@@ -187,24 +195,22 @@ public class RobotContainer
       Commands.runOnce(() -> m_armSubsystem.setReference(25))
     );
 
-    m_buttonBox.b().whileTrue(
-      Commands.runOnce(() -> m_armSubsystem.setReferenceSD())
-    );
+    // 
 
     m_buttonBox.button(10).whileTrue(
-      Commands.runOnce(m_climberSubsystem::climberUpOverride)
+      m_climberUpCommand
     );
 
     m_buttonBox.button(9).whileTrue(
-      Commands.runOnce(m_climberSubsystem::climberDownOverride)
+      m_climberDownCommand
     );
 
     m_buttonBox.pov(0).whileTrue(
-      Commands.runOnce(m_climberSubsystem::climberUp)
+      m_climberUpCommand
     );
 
     m_buttonBox.pov(180).whileTrue(
-      Commands.runOnce(m_climberSubsystem::climberDown)
+      m_climberDownCommand
     );
   }
 

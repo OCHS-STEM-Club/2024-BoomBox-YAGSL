@@ -40,6 +40,8 @@ public class ArmSubsystem extends SubsystemBase {
 
   private double speed;
   private double value;
+  private double armValue;
+  public boolean tuningMode;
 
   public ArmSubsystem() {
     armMotorLeft = new CANSparkMax(Constants.ArmConstants.kArmMotorLeftID, MotorType.kBrushless);
@@ -80,23 +82,27 @@ public class ArmSubsystem extends SubsystemBase {
 
     armMotorLeft.follow(armMotorRight);
 
-    SmartDashboard.putNumber("Arm PID Value", 23);
+    armValue = 0;
+    tuningMode = false;
+
+    SmartDashboard.putNumber("Arm PID Value", armValue);
+    SmartDashboard.putBoolean("Tuning Mode", tuningMode);
   }
 
   @Override
   public void periodic() {
 
     // This method will be called once per scheduler run
-    //System.out.println(thru.getAbsolutePosition());
     Logger.recordOutput("Left Arm Motor", armMotorLeft.get());
     Logger.recordOutput("Right Arm Motor", armMotorRight.get());
     Logger.recordOutput("Arm Encoder", m_encoder.getPosition());
 
     SmartDashboard.putNumber("Arm Encoder", m_encoder.getPosition());
 
-    SmartDashboard.putNumber("Built-In Right Encoder", armMotorRight.getEncoder().getPosition());
+    double value = SmartDashboard.getNumber("Arm PID Value", 0);
+    boolean tuningMode = SmartDashboard.getBoolean("Tuning Mode", false);
+    if((value != 0 && tuningMode == true)) { m_pidController.setReference(value,CANSparkMax.ControlType.kPosition); armValue = value; }
 
-    value = SmartDashboard.getNumber("Arm PID", 0);
   }
 
 
@@ -133,9 +139,13 @@ public class ArmSubsystem extends SubsystemBase {
     m_pidController.setReference(pidReference,CANSparkMax.ControlType.kPosition);
   }
 
-  public void setReferenceSD() {
-    m_pidController.setReference(value ,CANSparkMax.ControlType.kPosition);
-  }
+  // public void setReferenceSD() {
+  //   if((value != 0)) { m_pidController.setReference(value,CANSparkMax.ControlType.kPosition); armValue = value; }
+
+  // }
+  // public void SettuningMode() {
+  //   boolean tuningMode = true;
+  // }
 
 
 
