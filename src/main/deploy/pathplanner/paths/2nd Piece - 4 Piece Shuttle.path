@@ -3,25 +3,25 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 1.5212676579199327,
-        "y": 1.4405736503780713
+        "x": 1.4966666704633864,
+        "y": 3.349981946600665
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.3874256427513463,
-        "y": 0.5744156655466576
+        "x": 2.159300462098683,
+        "y": 1.9234786451635695
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 8.3,
-        "y": 0.7696215392430785
+        "x": 8.4,
+        "y": 0.7
       },
       "prevControl": {
-        "x": 7.300000000000001,
-        "y": 0.7696215392430785
+        "x": 7.4,
+        "y": 0.7
       },
       "nextControl": null,
       "isLocked": false,
@@ -45,7 +45,7 @@
   "reversed": false,
   "folder": "4 Piece Source Side Shuttle Auto",
   "previewStartingState": {
-    "rotation": -43.83086067209264,
+    "rotation": 0.0,
     "velocity": 0
   },
   "useDefaultConstraints": true

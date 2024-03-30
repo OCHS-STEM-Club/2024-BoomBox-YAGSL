@@ -2,10 +2,10 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 1.52,
-      "y": 1.44
+      "x": 1.5,
+      "y": 3.35
     },
-    "rotation": -45.0
+    "rotation": 0.0
   },
   "command": {
     "type": "sequential",
@@ -24,9 +24,27 @@
           }
         },
         {
+          "type": "wait",
+          "data": {
+            "waitTime": 0.5
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "Intake Off"
+          }
+        },
+        {
           "type": "parallel",
           "data": {
             "commands": [
+              {
+                "type": "named",
+                "data": {
+                  "name": "Intake in BB"
+                }
+              },
               {
                 "type": "path",
                 "data": {
@@ -38,12 +56,6 @@
                 "data": {
                   "name": "Arm to Intake"
                 }
-              },
-              {
-                "type": "named",
-                "data": {
-                  "name": "Intake in BB"
-                }
               }
             ]
           }
@@ -51,7 +63,7 @@
         {
           "type": "wait",
           "data": {
-            "waitTime": 0.5
+            "waitTime": 0.25
           }
         },
         {
@@ -63,7 +75,7 @@
         {
           "type": "wait",
           "data": {
-            "waitTime": 1.5
+            "waitTime": 0.75
           }
         },
         {
@@ -75,7 +87,7 @@
         {
           "type": "wait",
           "data": {
-            "waitTime": 0.5
+            "waitTime": 0.25
           }
         },
         {
@@ -106,7 +118,7 @@
         {
           "type": "wait",
           "data": {
-            "waitTime": 0.5
+            "waitTime": 0.25
           }
         },
         {
@@ -118,7 +130,7 @@
         {
           "type": "wait",
           "data": {
-            "waitTime": 1.5
+            "waitTime": 0.75
           }
         },
         {
@@ -161,7 +173,7 @@
         {
           "type": "wait",
           "data": {
-            "waitTime": 0.5
+            "waitTime": 0.25
           }
         },
         {
@@ -173,7 +185,7 @@
         {
           "type": "wait",
           "data": {
-            "waitTime": 1.5
+            "waitTime": 0.75
           }
         },
         {

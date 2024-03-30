@@ -2,10 +2,10 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 0.91,
-      "y": 4.75
+      "x": 0.63,
+      "y": 4.55
     },
-    "rotation": -63.0
+    "rotation": -60.0
   },
   "command": {
     "type": "sequential",
@@ -18,13 +18,19 @@
               {
                 "type": "named",
                 "data": {
-                  "name": "Arm to Shooter Sides"
+                  "name": "Arm to Shooter Midlfield 2 piece"
                 }
               },
               {
                 "type": "named",
                 "data": {
                   "name": "Shooter On"
+                }
+              },
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "1st Piece - 2 Piece Source"
                 }
               }
             ]
@@ -33,7 +39,7 @@
         {
           "type": "wait",
           "data": {
-            "waitTime": 1.5
+            "waitTime": 1.0
           }
         },
         {
@@ -53,12 +59,6 @@
           "data": {
             "commands": [
               {
-                "type": "path",
-                "data": {
-                  "pathName": "2nd Piece - 2 Piece Source"
-                }
-              },
-              {
                 "type": "named",
                 "data": {
                   "name": "Arm to Intake"
@@ -67,7 +67,7 @@
               {
                 "type": "named",
                 "data": {
-                  "name": "Intake in BB"
+                  "name": "Arm to Shooter Midlfield 2 piece"
                 }
               }
             ]
@@ -80,22 +80,28 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "2nd Piece Back - 2 Piece Source"
+                  "pathName": "2nd Piece - 2 Piece Source"
                 }
               },
               {
                 "type": "named",
                 "data": {
-                  "name": "Arm to Shooter Sides"
+                  "name": "Intake in BB"
                 }
               }
             ]
           }
         },
         {
+          "type": "named",
+          "data": {
+            "name": "Arm to Shooter Midlfield 2 piece"
+          }
+        },
+        {
           "type": "wait",
           "data": {
-            "waitTime": 0.5
+            "waitTime": 1.5
           }
         },
         {
