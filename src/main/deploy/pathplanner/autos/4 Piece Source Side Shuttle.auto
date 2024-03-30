@@ -2,38 +2,172 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 1.58,
-      "y": 3.22
+      "x": 1.52,
+      "y": 1.44
     },
-    "rotation": 0
+    "rotation": -45.0
   },
   "command": {
     "type": "sequential",
     "data": {
       "commands": [
         {
+          "type": "named",
+          "data": {
+            "name": "Shooter On"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "Intake in Override"
+          }
+        },
+        {
           "type": "parallel",
           "data": {
             "commands": [
               {
-                "type": "named",
-                "data": {
-                  "name": "Arm to Shooter Side Source 1st Piece Test"
-                }
-              },
-              {
-                "type": "named",
-                "data": {
-                  "name": "Shooter On"
-                }
-              },
-              {
                 "type": "path",
                 "data": {
-                  "pathName": "1st Piece - 3 Piece Source Test"
+                  "pathName": "2nd Piece - 4 Piece Shuttle"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "Arm to Intake"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "Intake in BB"
                 }
               }
             ]
+          }
+        },
+        {
+          "type": "wait",
+          "data": {
+            "waitTime": 0.5
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "Arm to Shooter Shuttle"
+          }
+        },
+        {
+          "type": "wait",
+          "data": {
+            "waitTime": 1.5
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "Intake in Override"
+          }
+        },
+        {
+          "type": "wait",
+          "data": {
+            "waitTime": 0.5
+          }
+        },
+        {
+          "type": "parallel",
+          "data": {
+            "commands": [
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "3rd Piece - 4 Piece Shuttle"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "Arm to Intake"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "Intake in BB"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "wait",
+          "data": {
+            "waitTime": 0.5
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "Arm to Shooter Shuttle"
+          }
+        },
+        {
+          "type": "wait",
+          "data": {
+            "waitTime": 1.5
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "Intake in Override"
+          }
+        },
+        {
+          "type": "wait",
+          "data": {
+            "waitTime": 0.5
+          }
+        },
+        {
+          "type": "parallel",
+          "data": {
+            "commands": [
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "4th Piece - 4 Piece Shuttle"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "Arm to Intake"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "Intake in BB"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "wait",
+          "data": {
+            "waitTime": 0.5
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "Arm to Shooter Shuttle"
           }
         },
         {
@@ -57,93 +191,13 @@
         {
           "type": "named",
           "data": {
-            "name": "Arm to Intake"
-          }
-        },
-        {
-          "type": "wait",
-          "data": {
-            "waitTime": 1.0
-          }
-        },
-        {
-          "type": "parallel",
-          "data": {
-            "commands": [
-              {
-                "type": "named",
-                "data": {
-                  "name": "Intake in BB"
-                }
-              },
-              {
-                "type": "path",
-                "data": {
-                  "pathName": "2nd Piece - 3 Piece Source Test"
-                }
-              },
-              {
-                "type": "named",
-                "data": {
-                  "name": "Arm to Intake"
-                }
-              }
-            ]
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "Intake in BB"
-          }
-        },
-        {
-          "type": "parallel",
-          "data": {
-            "commands": [
-              {
-                "type": "path",
-                "data": {
-                  "pathName": "2nd Piece Back - 3 Piece Source Test"
-                }
-              },
-              {
-                "type": "named",
-                "data": {
-                  "name": "Arm to Shooter Side Source 1st Piece Test"
-                }
-              }
-            ]
-          }
-        },
-        {
-          "type": "wait",
-          "data": {
-            "waitTime": 1.0
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "Intake in Override"
-          }
-        },
-        {
-          "type": "wait",
-          "data": {
-            "waitTime": 0.5
+            "name": "Shooter Off"
           }
         },
         {
           "type": "named",
           "data": {
             "name": "Intake Off"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "Shooter Off"
           }
         }
       ]

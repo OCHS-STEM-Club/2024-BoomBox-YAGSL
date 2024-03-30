@@ -26,6 +26,7 @@ import frc.robot.commands.Intake.IntakeOutCommand;
 import frc.robot.commands.Intake.IntakeOverrideCommand;
 import frc.robot.commands.Shooter.ShooterCommand;
 import frc.robot.subsystems.ArmSubsystem;
+import frc.robot.subsystems.ClimberSubsystem;
 import frc.robot.subsystems.IntakeSubsystem;
 import frc.robot.subsystems.ShooterSubsystem;
 import frc.robot.subsystems.SwerveSubsystem;
@@ -52,6 +53,7 @@ public class RobotContainer
   private final ArmSubsystem m_armSubsystem = new ArmSubsystem();
   private final IntakeSubsystem m_intakeSubsystem = new IntakeSubsystem();
   private final ShooterSubsystem m_shooterSubsystem = new ShooterSubsystem();
+  private final ClimberSubsystem m_climberSubsystem = new ClimberSubsystem();
 
   // Replace with CommandPS4Controller or CommandJoystick if needed
   final CommandXboxController driverXbox = new CommandXboxController(OperatorConstants.kDriverControllerPort);
@@ -81,10 +83,14 @@ public class RobotContainer
 
     // Shooter
     NamedCommands.registerCommand("Shooter On", Commands.runOnce(() -> m_shooterSubsystem.shooterOn(0.4)));
+    NamedCommands.registerCommand("Shooter On 4 Piece", Commands.runOnce(() -> m_shooterSubsystem.shooterOn(0.45)));
     NamedCommands.registerCommand("Shooter Off", Commands.runOnce(m_shooterSubsystem::shooterOff));
     
     // Arm
     NamedCommands.registerCommand("Arm to Shooter 1st Piece Middle", Commands.runOnce(() -> m_armSubsystem.setReference(27)));
+    NamedCommands.registerCommand("Arm to Shooter Shuttle", Commands.runOnce(() -> m_armSubsystem.setReference(27)));
+    NamedCommands.registerCommand("Arm to Shooter 4 Piece", Commands.runOnce(() -> m_armSubsystem.setReference(31)));
+    NamedCommands.registerCommand("Arm to Shooter 4 Piece 1st", Commands.runOnce(() -> m_armSubsystem.setReference(37)));
     NamedCommands.registerCommand("Arm to Shooter Sides", Commands.runOnce(() -> m_armSubsystem.setReference(7)));
     NamedCommands.registerCommand("Arm to Intake", Commands.runOnce(m_armSubsystem::intakeSetpoint));
     NamedCommands.registerCommand("Arm to Amp", Commands.runOnce(m_armSubsystem::ampSetpoint));
@@ -177,15 +183,28 @@ public class RobotContainer
     );
       
     m_buttonBox.leftTrigger().whileTrue(
-      Commands.runOnce(() -> m_armSubsystem.setReference(26.5))
-
+      Commands.runOnce(() -> m_armSubsystem.setReference(30))
     );
 
     m_buttonBox.b().whileTrue(
       Commands.runOnce(() -> m_armSubsystem.setReferenceSD())
-      
     );
 
+    m_buttonBox.button(10).whileTrue(
+      Commands.runOnce(m_climberSubsystem::climberUpOverride)
+    );
+
+    m_buttonBox.button(9).whileTrue(
+      Commands.runOnce(m_climberSubsystem::climberDownOverride)
+    );
+
+    m_buttonBox.pov(0).whileTrue(
+      Commands.runOnce(m_climberSubsystem::climberUp)
+    );
+
+    m_buttonBox.pov(180).whileTrue(
+      Commands.runOnce(m_climberSubsystem::climberDown)
+    );
   }
 
   /**

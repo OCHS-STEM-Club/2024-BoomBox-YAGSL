@@ -2,10 +2,10 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 1.58,
-      "y": 3.22
+      "x": 0.91,
+      "y": 4.75
     },
-    "rotation": 0
+    "rotation": -63.0
   },
   "command": {
     "type": "sequential",
@@ -18,19 +18,13 @@
               {
                 "type": "named",
                 "data": {
-                  "name": "Arm to Shooter Side Source 1st Piece Test"
+                  "name": "Arm to Shooter Sides"
                 }
               },
               {
                 "type": "named",
                 "data": {
                   "name": "Shooter On"
-                }
-              },
-              {
-                "type": "path",
-                "data": {
-                  "pathName": "1st Piece - 3 Piece Source Test"
                 }
               }
             ]
@@ -55,31 +49,13 @@
           }
         },
         {
-          "type": "named",
-          "data": {
-            "name": "Arm to Intake"
-          }
-        },
-        {
-          "type": "wait",
-          "data": {
-            "waitTime": 1.0
-          }
-        },
-        {
           "type": "parallel",
           "data": {
             "commands": [
               {
-                "type": "named",
-                "data": {
-                  "name": "Intake in BB"
-                }
-              },
-              {
                 "type": "path",
                 "data": {
-                  "pathName": "2nd Piece - 3 Piece Source Test"
+                  "pathName": "2nd Piece - 2 Piece Source"
                 }
               },
               {
@@ -87,14 +63,14 @@
                 "data": {
                   "name": "Arm to Intake"
                 }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "Intake in BB"
+                }
               }
             ]
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "Intake in BB"
           }
         },
         {
@@ -104,13 +80,13 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "2nd Piece Back - 3 Piece Source Test"
+                  "pathName": "2nd Piece Back - 2 Piece Source"
                 }
               },
               {
                 "type": "named",
                 "data": {
-                  "name": "Arm to Shooter Side Source 1st Piece Test"
+                  "name": "Arm to Shooter Sides"
                 }
               }
             ]
@@ -119,7 +95,7 @@
         {
           "type": "wait",
           "data": {
-            "waitTime": 1.0
+            "waitTime": 0.5
           }
         },
         {
@@ -137,13 +113,13 @@
         {
           "type": "named",
           "data": {
-            "name": "Intake Off"
+            "name": "Shooter Off"
           }
         },
         {
           "type": "named",
           "data": {
-            "name": "Shooter Off"
+            "name": "Intake Off"
           }
         }
       ]

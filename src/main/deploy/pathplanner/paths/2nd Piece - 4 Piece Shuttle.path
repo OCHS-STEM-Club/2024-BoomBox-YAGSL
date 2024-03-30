@@ -1,0 +1,52 @@
+{
+  "version": 1.0,
+  "waypoints": [
+    {
+      "anchor": {
+        "x": 1.5212676579199327,
+        "y": 1.4405736503780713
+      },
+      "prevControl": null,
+      "nextControl": {
+        "x": 2.3874256427513463,
+        "y": 0.5744156655466576
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 8.3,
+        "y": 0.7696215392430785
+      },
+      "prevControl": {
+        "x": 7.300000000000001,
+        "y": 0.7696215392430785
+      },
+      "nextControl": null,
+      "isLocked": false,
+      "linkedName": null
+    }
+  ],
+  "rotationTargets": [],
+  "constraintZones": [],
+  "eventMarkers": [],
+  "globalConstraints": {
+    "maxVelocity": 3.81,
+    "maxAcceleration": 2.0,
+    "maxAngularVelocity": 540.0,
+    "maxAngularAcceleration": 720.0
+  },
+  "goalEndState": {
+    "velocity": 0.0,
+    "rotation": 0.0,
+    "rotateFast": false
+  },
+  "reversed": false,
+  "folder": "4 Piece Source Side Shuttle Auto",
+  "previewStartingState": {
+    "rotation": -43.83086067209264,
+    "velocity": 0
+  },
+  "useDefaultConstraints": true
+}

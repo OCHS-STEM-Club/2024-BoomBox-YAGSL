@@ -3,38 +3,32 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 2.91,
-        "y": 6.98
+        "x": 8.3,
+        "y": 2.43
       },
       "prevControl": null,
       "nextControl": {
-        "x": 3.122132034355965,
-        "y": 7.192132034355965
+        "x": 7.300000000000001,
+        "y": 2.43
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 1.0,
-        "y": 5.5
+        "x": 8.3,
+        "y": 4.1046482092964185
       },
       "prevControl": {
-        "x": 0.7878679656440353,
-        "y": 5.287867965644035
+        "x": 6.15873077900002,
+        "y": 4.745999491998984
       },
       "nextControl": null,
       "isLocked": false,
       "linkedName": null
     }
   ],
-  "rotationTargets": [
-    {
-      "waypointRelativePos": 0.4,
-      "rotationDegrees": 0.0,
-      "rotateFast": false
-    }
-  ],
+  "rotationTargets": [],
   "constraintZones": [],
   "eventMarkers": [],
   "globalConstraints": {
@@ -44,12 +38,12 @@
     "maxAngularAcceleration": 720.0
   },
   "goalEndState": {
-    "velocity": 0.0,
-    "rotation": 0.0,
+    "velocity": 0,
+    "rotation": 0,
     "rotateFast": false
   },
   "reversed": false,
-  "folder": "4 Piece Middle Subwoofer Auto",
+  "folder": "4 Piece Source Side Shuttle Auto",
   "previewStartingState": {
     "rotation": 0,
     "velocity": 0

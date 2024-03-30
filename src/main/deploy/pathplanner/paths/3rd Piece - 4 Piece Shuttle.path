@@ -3,25 +3,25 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 1.580469314784785,
-        "y": 3.22
+        "x": 8.3,
+        "y": 0.77
       },
       "prevControl": null,
       "nextControl": {
-        "x": 1.580469314784785,
-        "y": 3.3200000000000003
+        "x": 7.300000000000001,
+        "y": 0.7699999999999999
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 1.580469314784785,
-        "y": 4.4499912076747234
+        "x": 8.3,
+        "y": 2.4272679314589416
       },
       "prevControl": {
-        "x": 1.580469314784785,
-        "y": 4.249991207674723
+        "x": 5.9909927512162735,
+        "y": 3.0094175572966533
       },
       "nextControl": null,
       "isLocked": false,
@@ -34,19 +34,19 @@
   "globalConstraints": {
     "maxVelocity": 3.81,
     "maxAcceleration": 2.0,
-    "maxAngularVelocity": 740.0,
-    "maxAngularAcceleration": 920.0
+    "maxAngularVelocity": 540.0,
+    "maxAngularAcceleration": 720.0
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": -50.0,
+    "rotation": 0,
     "rotateFast": false
   },
   "reversed": false,
-  "folder": "3 Piece Source Side Subwoofer Test",
+  "folder": "4 Piece Source Side Shuttle Auto",
   "previewStartingState": {
     "rotation": 0,
     "velocity": 0
   },
-  "useDefaultConstraints": false
+  "useDefaultConstraints": true
 }

@@ -58,7 +58,7 @@ public final class Constants
   public static class ShooterConstants {
     public static final int kShooterMotorLeftID = 21;
     public static final int kShooterMotorRightID = 22;
-    public static final double kShooterSpeed = 0.4;
+    public static final double kShooterSpeed = 0.45;
   }
 
   public static class IntakeConstants {
@@ -88,5 +88,9 @@ public final class Constants
     public static final double kArmUpSpeed = 0.2;
     public static final double kArmDownSpeed = -0.2;
 
+  }
+
+  public static class ClimberConstants {
+    public static final int kClimberMotorID = 23;
   }
 }

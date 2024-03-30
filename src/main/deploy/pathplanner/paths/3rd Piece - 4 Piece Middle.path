@@ -4,24 +4,24 @@
     {
       "anchor": {
         "x": 2.8,
-        "y": 5.550936522700434
+        "y": 5.55
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.9499999999999997,
-        "y": 5.550936522700434
+        "x": 2.8113496550437564,
+        "y": 5.849785232008496
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 1.15,
-        "y": 5.550936522700434
+        "x": 2.8,
+        "y": 7.114110012973389
       },
       "prevControl": {
-        "x": 1.0,
-        "y": 5.550936522700434
+        "x": 2.7786258850036276,
+        "y": 6.814872403024168
       },
       "nextControl": null,
       "isLocked": false,
@@ -32,15 +32,15 @@
   "constraintZones": [],
   "eventMarkers": [],
   "globalConstraints": {
-    "maxVelocity": 3.81,
+    "maxVelocity": 2.0,
     "maxAcceleration": 2.0,
     "maxAngularVelocity": 540.0,
     "maxAngularAcceleration": 720.0
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 0,
-    "rotateFast": false
+    "rotation": 92.0,
+    "rotateFast": true
   },
   "reversed": false,
   "folder": "4 Piece Middle Subwoofer Auto",
@@ -48,5 +48,5 @@
     "rotation": 0,
     "velocity": 0
   },
-  "useDefaultConstraints": true
+  "useDefaultConstraints": false
 }

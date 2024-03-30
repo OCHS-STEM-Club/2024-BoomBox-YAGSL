@@ -5,7 +5,7 @@
       "x": 1.15,
       "y": 5.55
     },
-    "rotation": 0
+    "rotation": 0.0
   },
   "command": {
     "type": "sequential",
@@ -67,32 +67,13 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "Middle 1st Piece"
+                  "pathName": "2nd Piece - 4 Piece Middle"
                 }
               },
               {
                 "type": "named",
                 "data": {
                   "name": "Intake in BB"
-                }
-              }
-            ]
-          }
-        },
-        {
-          "type": "parallel",
-          "data": {
-            "commands": [
-              {
-                "type": "path",
-                "data": {
-                  "pathName": "Middle 1st Piece Back"
-                }
-              },
-              {
-                "type": "named",
-                "data": {
-                  "name": "Arm to Shooter Subwoofer"
                 }
               }
             ]
@@ -101,63 +82,19 @@
         {
           "type": "named",
           "data": {
-            "name": "Intake in Override"
+            "name": "Shooter On 4 Piece"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "Arm to Shooter 4 Piece 1st"
           }
         },
         {
           "type": "wait",
           "data": {
-            "waitTime": 0.5
-          }
-        },
-        {
-          "type": "parallel",
-          "data": {
-            "commands": [
-              {
-                "type": "path",
-                "data": {
-                  "pathName": "Middle 2nd Piece"
-                }
-              },
-              {
-                "type": "named",
-                "data": {
-                  "name": "Arm to Intake"
-                }
-              },
-              {
-                "type": "named",
-                "data": {
-                  "name": "Intake in BB"
-                }
-              }
-            ]
-          }
-        },
-        {
-          "type": "parallel",
-          "data": {
-            "commands": [
-              {
-                "type": "named",
-                "data": {
-                  "name": "Arm to Shooter Subwoofer"
-                }
-              },
-              {
-                "type": "path",
-                "data": {
-                  "pathName": "Middle 2nd Piece Back"
-                }
-              },
-              {
-                "type": "named",
-                "data": {
-                  "name": "Intake in BB"
-                }
-              }
-            ]
+            "waitTime": 1.0
           }
         },
         {
@@ -175,13 +112,57 @@
         {
           "type": "named",
           "data": {
-            "name": "Shooter Off"
+            "name": "Arm to Intake"
+          }
+        },
+        {
+          "type": "wait",
+          "data": {
+            "waitTime": 0.5
+          }
+        },
+        {
+          "type": "parallel",
+          "data": {
+            "commands": [
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "3rd Piece - 4 Piece Middle"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "Intake in BB"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "parallel",
+          "data": {
+            "commands": [
+              {
+                "type": "named",
+                "data": {
+                  "name": "Arm to Shooter 4 Piece"
+                }
+              },
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "3rd Piece Back - 4 Piece Middle"
+                }
+              }
+            ]
           }
         },
         {
           "type": "named",
           "data": {
-            "name": "Intake Off"
+            "name": "Intake in Override"
           }
         }
       ]

@@ -67,7 +67,7 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "Side Subwoofer To Stage"
+                  "pathName": "2nd Piece - 3 Piece Source"
                 }
               },
               {
@@ -92,7 +92,7 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "Stage To Shoot"
+                  "pathName": "2nd Piece Back - 3 Piece Source"
                 }
               },
               {

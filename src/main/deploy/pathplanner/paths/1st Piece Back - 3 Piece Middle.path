@@ -3,25 +3,25 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 2.5,
-        "y": 4.2
+        "x": 2.8,
+        "y": 5.550936522700434
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.3,
-        "y": 4.2
+        "x": 2.9499999999999997,
+        "y": 5.550936522700434
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 1.58,
-        "y": 4.45
+        "x": 1.15,
+        "y": 5.550936522700434
       },
       "prevControl": {
-        "x": 1.78,
-        "y": 4.45
+        "x": 1.0,
+        "y": 5.550936522700434
       },
       "nextControl": null,
       "isLocked": false,
@@ -39,11 +39,11 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": -50.0,
+    "rotation": 0,
     "rotateFast": false
   },
   "reversed": false,
-  "folder": "3 Piece Source Side Subwoofer Test",
+  "folder": "3 Piece Middle Subwoofer Auto",
   "previewStartingState": {
     "rotation": 0,
     "velocity": 0

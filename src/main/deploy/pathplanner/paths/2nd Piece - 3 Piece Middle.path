@@ -3,25 +3,25 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 1.58,
-        "y": 4.45
+        "x": 1.15,
+        "y": 5.55
       },
       "prevControl": null,
       "nextControl": {
-        "x": 1.6799999999999997,
-        "y": 4.45
+        "x": 1.3621320343559642,
+        "y": 5.7621320343559645
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 2.5,
-        "y": 4.2
+        "x": 2.9066934025451485,
+        "y": 6.979658581285779
       },
       "prevControl": {
-        "x": 2.3,
-        "y": 4.2
+        "x": 2.6945613681891842,
+        "y": 6.7675265469298145
       },
       "nextControl": null,
       "isLocked": false,
@@ -30,8 +30,8 @@
   ],
   "rotationTargets": [
     {
-      "waypointRelativePos": 0.2,
-      "rotationDegrees": 5.0,
+      "waypointRelativePos": 0.4,
+      "rotationDegrees": 45.0,
       "rotateFast": false
     }
   ],
@@ -40,19 +40,19 @@
   "globalConstraints": {
     "maxVelocity": 3.81,
     "maxAcceleration": 2.0,
-    "maxAngularVelocity": 520.0,
-    "maxAngularAcceleration": 920.0
+    "maxAngularVelocity": 540.0,
+    "maxAngularAcceleration": 720.0
   },
   "goalEndState": {
-    "velocity": 0,
-    "rotation": 5.0,
+    "velocity": 0.0,
+    "rotation": 45.0,
     "rotateFast": false
   },
   "reversed": false,
-  "folder": "3 Piece Source Side Subwoofer Test",
+  "folder": "3 Piece Middle Subwoofer Auto",
   "previewStartingState": {
     "rotation": 0,
     "velocity": 0
   },
-  "useDefaultConstraints": false
+  "useDefaultConstraints": true
 }
