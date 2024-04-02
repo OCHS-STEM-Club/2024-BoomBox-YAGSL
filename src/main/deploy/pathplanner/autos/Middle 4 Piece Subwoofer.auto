@@ -67,7 +67,7 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "2nd Piece - 4 Piece Middle"
+                  "pathName": "4 Piece Middle_2nd Piece"
                 }
               },
               {
@@ -128,7 +128,7 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "3rd Piece - 4 Piece Middle"
+                  "pathName": "4 Piece Middle_3rd Piece"
                 }
               },
               {
@@ -153,7 +153,7 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "3rd Piece Back - 4 Piece Middle"
+                  "pathName": "4 Piece Middle_3rd Piece Back"
                 }
               }
             ]

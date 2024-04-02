@@ -30,7 +30,7 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "1st Piece - 3 Piece Source Test"
+                  "pathName": "3 Piece Source Test_1st Piece"
                 }
               }
             ]
@@ -79,7 +79,7 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "2nd Piece - 3 Piece Source Test"
+                  "pathName": "3 Piece Source Test_2nd Piece"
                 }
               },
               {
@@ -104,7 +104,7 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "2nd Piece Back - 3 Piece Source Test"
+                  "pathName": "3 Piece Source Test_2nd Piece Back"
                 }
               },
               {

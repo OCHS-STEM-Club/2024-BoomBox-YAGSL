@@ -67,7 +67,7 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "1st Piece - 3 Piece Middle"
+                  "pathName": "3 Piece Middle_2nd Piece"
                 }
               },
               {
@@ -86,7 +86,7 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "1st Piece Back - 3 Piece Middle"
+                  "pathName": "3 Piece Middle_2nd Piece Back"
                 }
               },
               {
@@ -117,7 +117,7 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "2nd Piece - 3 Piece Middle"
+                  "pathName": "3 Piece Middle_3rd Piece"
                 }
               },
               {
@@ -148,7 +148,7 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "2nd Piece Back - 3 Piece Middle"
+                  "pathName": "3 Piece Middle_3rd Piece Back"
                 }
               },
               {

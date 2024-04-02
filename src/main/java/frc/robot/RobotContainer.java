@@ -87,7 +87,7 @@ public class RobotContainer
     NamedCommands.registerCommand("Intake Out", Commands.runOnce(() -> m_intakeSubsystem.intakeSpeed(-0.4)));
     NamedCommands.registerCommand("Intake in BB", new IntakeInCommand(m_intakeSubsystem));
     NamedCommands.registerCommand("Intake Off", Commands.runOnce(m_intakeSubsystem::intakeOff));
-    NamedCommands.registerCommand("Intake In BB w/o Timeout", new IntakeInCommand(m_intakeSubsystem));
+    // NamedCommands.registerCommand("Intake In BB w/o Timeout", new IntakeInCommand(m_intakeSubsystem));
 
     // Shooter
     NamedCommands.registerCommand("Shooter On", Commands.runOnce(() -> m_shooterSubsystem.shooterOn(0.4)));

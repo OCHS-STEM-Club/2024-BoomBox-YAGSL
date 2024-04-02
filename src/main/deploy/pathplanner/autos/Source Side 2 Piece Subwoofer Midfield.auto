@@ -30,7 +30,7 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "1st Piece - 2 Piece Source"
+                  "pathName": "2 Piece Source_1st Piece"
                 }
               }
             ]
@@ -80,7 +80,7 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "2nd Piece - 2 Piece Source"
+                  "pathName": "2 Piece Source_2nd Piece"
                 }
               },
               {

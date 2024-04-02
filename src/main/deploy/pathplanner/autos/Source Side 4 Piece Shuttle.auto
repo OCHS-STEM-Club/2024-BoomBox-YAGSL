@@ -48,7 +48,7 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "2nd Piece - 4 Piece Shuttle"
+                  "pathName": "4 Piece Shuttle_2nd Piece"
                 }
               },
               {
@@ -97,7 +97,7 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "3rd Piece - 4 Piece Shuttle"
+                  "pathName": "4 Piece Shuttle_3rd Piece"
                 }
               },
               {
@@ -152,7 +152,7 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "4th Piece - 4 Piece Shuttle"
+                  "pathName": "4 Piece Shuttle_4th Piece"
                 }
               },
               {
