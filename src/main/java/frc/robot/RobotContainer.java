@@ -225,7 +225,7 @@ public class RobotContainer
       m_intakeOutCommand
     );
 
-    // Button Box Configs
+    // Operator Configs
     m_buttonBox.povDown().whileTrue(
       m_manualArmDownCommand
     );
