@@ -53,6 +53,8 @@ public final class Constants
 
     public static final int kOperatorControllerPort = 2;
     public static final int kDriverControllerPort = 0;
+
+    public static final boolean isButtonBoxBeingUsed = false;
   }
 
   public static class ShooterConstants {

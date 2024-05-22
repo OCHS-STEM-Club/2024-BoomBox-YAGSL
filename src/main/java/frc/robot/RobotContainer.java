@@ -65,6 +65,7 @@ public class RobotContainer
 
   private final SendableChooser<Command> autoChooser;
 
+
   //Commands
   ArmCommand m_manualArmUpCommand = new ArmCommand(m_armSubsystem, ArmConstants.kArmUpSpeed);
   ArmCommand m_manualArmDownCommand = new ArmCommand(m_armSubsystem, ArmConstants.kArmDownSpeed);
@@ -72,7 +73,7 @@ public class RobotContainer
   IntakeInCommand m_intakeInCommand = new IntakeInCommand(m_intakeSubsystem);
   IntakeOverrideCommand m_intakeOverrideCommand = new IntakeOverrideCommand(m_intakeSubsystem);
   IntakeOutCommand m_intakeOutCommand = new IntakeOutCommand(m_intakeSubsystem);
-  ClimberDownOverrideCmd m_ClimberDownOverrideCmd = new ClimberDownOverrideCmd(m_climberSubsystem);
+  ClimberDownOverrideCmd m_climberDownOverrideCmd = new ClimberDownOverrideCmd(m_climberSubsystem);
   ClimberUpOverrideCmd m_climberUpOverrideCmd = new ClimberUpOverrideCmd(m_climberSubsystem);
   ClimberDownCommand m_climberDownCommand = new ClimberDownCommand(m_climberSubsystem);
   ClimberUpCommand m_climberUpCommand = new ClimberUpCommand(m_climberSubsystem);
@@ -144,8 +145,8 @@ public class RobotContainer
    */
   private void configureBindings()
   {
-
-    // Controller Configs
+    if (OperatorConstants.isButtonBoxBeingUsed == true) {
+      // Controller Configs
     driverXbox.a().onTrue(
       Commands.runOnce(drivebase::zeroGyro)
       );
@@ -164,10 +165,6 @@ public class RobotContainer
 
     driverXbox.leftBumper().whileTrue(
       m_intakeOutCommand
-    );
-
-    driverXbox.y().whileTrue(
-      drivebase.driveToPose(new Pose2d(new Translation2d(1.15,5.55),new Rotation2d(0)))
     );
 
     // Button Box Configs
@@ -190,19 +187,13 @@ public class RobotContainer
     m_buttonBox.button(5).whileTrue(
       Commands.runOnce(m_armSubsystem::ampSetpoint)
     );
-      
-    m_buttonBox.leftTrigger().whileTrue(
-      Commands.runOnce(() -> m_armSubsystem.setReference(25))
-    );
-
-    // 
 
     m_buttonBox.button(10).whileTrue(
-      m_climberUpCommand
+      m_climberUpOverrideCmd
     );
 
     m_buttonBox.button(9).whileTrue(
-      m_climberDownCommand
+      m_climberDownOverrideCmd
     );
 
     m_buttonBox.pov(0).whileTrue(
@@ -212,6 +203,66 @@ public class RobotContainer
     m_buttonBox.pov(180).whileTrue(
       m_climberDownCommand
     );
+    } else if (OperatorConstants.isButtonBoxBeingUsed == false) {
+      // Controller Configs
+    driverXbox.a().onTrue(
+      Commands.runOnce(drivebase::zeroGyro)
+      );
+
+    driverXbox.rightTrigger().whileTrue(
+      m_shooterCommand
+    );
+
+    driverXbox.leftTrigger().whileTrue(
+      m_intakeInCommand
+    );
+
+    driverXbox.b().whileTrue(
+      m_intakeOverrideCommand
+    );
+
+    driverXbox.leftBumper().whileTrue(
+      m_intakeOutCommand
+    );
+
+    // Button Box Configs
+    m_buttonBox.povDown().whileTrue(
+      m_manualArmDownCommand
+    );
+
+    m_buttonBox.povUp().whileTrue(
+      m_manualArmUpCommand
+    );
+
+    m_buttonBox.leftTrigger().whileTrue(
+      Commands.runOnce(m_armSubsystem::intakeSetpoint)
+    );
+
+    m_buttonBox.rightTrigger().whileTrue(
+      Commands.runOnce(m_armSubsystem::shooterSetpoint)
+    );
+      
+    m_buttonBox.a().whileTrue(
+      Commands.runOnce(m_armSubsystem::ampSetpoint)
+    );
+      
+    m_buttonBox.povRight().whileTrue(
+      m_climberUpOverrideCmd
+    );
+
+    m_buttonBox.povLeft().whileTrue(
+      m_climberDownOverrideCmd
+    );
+
+    m_buttonBox.rightBumper().whileTrue(
+      m_climberUpCommand
+    );
+
+    m_buttonBox.leftBumper().whileTrue(
+      m_climberDownCommand
+    );
+    }
+    
   }
 
   /**
