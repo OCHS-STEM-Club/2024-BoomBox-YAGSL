@@ -3,11 +3,9 @@
   "robotLength": 0.51,
   "holonomicMode": true,
   "pathFolders": [
-    "Source Side 2 Piece Subwoofer Midfield Auto",
     "Middle 3 Piece Subwoofer Auto",
+    "Source Side 2 Piece Subwoofer Midfield Auto",
     "Source Side 3 Piece Subwoofer Auto",
-    "Source Side 3 Piece Test",
-    "Middle 4 Piece Subwoofer Auto",
     "Source Side 4 Piece Shuttle Auto"
   ],
   "autoFolders": [],

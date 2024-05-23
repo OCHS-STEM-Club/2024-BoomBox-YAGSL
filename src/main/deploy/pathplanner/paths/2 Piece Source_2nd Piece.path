@@ -8,24 +8,24 @@
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.379514217408768,
-        "y": 1.56761363442841
+        "x": 2.379331753985678,
+        "y": 1.5675506927849039
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 8.65,
-        "y": 0.65
+        "x": 8.65671414652387,
+        "y": 0.8431802312962678
       },
       "prevControl": {
-        "x": 8.55,
-        "y": 0.65
+        "x": 8.55671414652387,
+        "y": 0.8431802312962678
       },
       "nextControl": {
-        "x": 8.75,
-        "y": 0.65
+        "x": 8.75671414652387,
+        "y": 0.8431802312962678
       },
       "isLocked": false,
       "linkedName": null
@@ -57,7 +57,42 @@
     }
   ],
   "constraintZones": [],
-  "eventMarkers": [],
+  "eventMarkers": [
+    {
+      "name": "New Event Marker",
+      "waypointRelativePos": 0.4,
+      "command": {
+        "type": "parallel",
+        "data": {
+          "commands": [
+            {
+              "type": "named",
+              "data": {
+                "name": "Arm to Intake"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "New Event Marker",
+      "waypointRelativePos": 1.5,
+      "command": {
+        "type": "parallel",
+        "data": {
+          "commands": [
+            {
+              "type": "named",
+              "data": {
+                "name": "Arm to Shooter Midlfield 2 piece"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
   "globalConstraints": {
     "maxVelocity": 3.81,
     "maxAcceleration": 2.0,

@@ -101,7 +101,7 @@ public class RobotContainer
     NamedCommands.registerCommand("Arm to Shooter 4 Piece", Commands.runOnce(() -> m_armSubsystem.setReference(31)));
     NamedCommands.registerCommand("Arm to Shooter 4 Piece 1st", Commands.runOnce(() -> m_armSubsystem.setReference(37)));
     NamedCommands.registerCommand("Arm to Shooter Sides", Commands.runOnce(() -> m_armSubsystem.setReference(7)));
-    NamedCommands.registerCommand("Arm to Shooter Midlfield 2 piece", Commands.runOnce(() -> m_armSubsystem.setReference(25)));
+    NamedCommands.registerCommand("Arm to Shooter Midlfield 2 piece", Commands.runOnce(() -> m_armSubsystem.setReference(23)));
     NamedCommands.registerCommand("Arm to Intake", Commands.runOnce(m_armSubsystem::intakeSetpoint));
     NamedCommands.registerCommand("Arm to Amp", Commands.runOnce(m_armSubsystem::ampSetpoint));
     NamedCommands.registerCommand("Arm to Shooter Subwoofer", Commands.runOnce(m_armSubsystem::shooterSetpoint));
