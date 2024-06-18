@@ -19,10 +19,12 @@ import edu.wpi.first.math.trajectory.Trajectory;
 import edu.wpi.first.math.util.Units;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.Timer;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import edu.wpi.first.wpilibj2.command.sysid.SysIdRoutine;
 import edu.wpi.first.wpilibj2.command.sysid.SysIdRoutine.Config;
+import frc.robot.Constants;
 import frc.robot.Constants.AutonConstants;
 import java.io.File;
 import java.util.function.DoubleSupplier;
@@ -42,7 +44,11 @@ import swervelib.telemetry.SwerveDriveTelemetry.TelemetryVerbosity;
 
 public class SwerveSubsystem extends SubsystemBase
 {
-
+private double translationSpeed;
+private double rotationSpeed;
+private double rotationValue;
+private double translationValue;
+private boolean tuningMode;
   /**
    * Swerve drive object.
    */
@@ -59,6 +65,13 @@ public class SwerveSubsystem extends SubsystemBase
    */
   public SwerveSubsystem(File directory)
   {
+    rotationSpeed = Constants.OperatorConstants.ROTATION_CONSTANT;
+    translationSpeed = Constants.OperatorConstants.TRANSLATION_X_CONSTANT;
+    
+    SmartDashboard.putNumber("Translation Speed", translationSpeed);
+    SmartDashboard.putNumber("Rotation Speed", rotationSpeed);
+
+  
 
 
     // Angle conversion factor is 360 / (GEAR RATIO * ENCODER RESOLUTION)
@@ -332,9 +345,11 @@ public class SwerveSubsystem extends SubsystemBase
     swerveDrive.drive(velocity);
   }
 
+
   @Override
   public void periodic()
   {
+    translationValue = SmartDashboard.getNumber("Translation Speed", maximumSpeed);
 
     Logger.recordOutput("Robot Angle", getHeading());
     Logger.recordOutput("Robot Pose", getPose());
