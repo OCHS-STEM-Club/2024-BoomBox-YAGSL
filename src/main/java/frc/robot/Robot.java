@@ -116,6 +116,7 @@ Logger.start(); // Start logging! No more data receivers, replay sources, or met
     }
     m_robotContainer.setDriveMode();
     m_robotContainer.setMotorBrake(true);
+    
   }
 
   /** This function is called periodically during operator control. */

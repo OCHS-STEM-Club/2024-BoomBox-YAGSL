@@ -44,11 +44,6 @@ import swervelib.telemetry.SwerveDriveTelemetry.TelemetryVerbosity;
 
 public class SwerveSubsystem extends SubsystemBase
 {
-private double translationSpeed;
-private double rotationSpeed;
-private double rotationValue;
-private double translationValue;
-private boolean tuningMode;
   /**
    * Swerve drive object.
    */
@@ -65,11 +60,6 @@ private boolean tuningMode;
    */
   public SwerveSubsystem(File directory)
   {
-    rotationSpeed = Constants.OperatorConstants.ROTATION_CONSTANT;
-    translationSpeed = Constants.OperatorConstants.TRANSLATION_X_CONSTANT;
-    
-    SmartDashboard.putNumber("Translation Speed", translationSpeed);
-    SmartDashboard.putNumber("Rotation Speed", rotationSpeed);
 
   
 
@@ -349,7 +339,6 @@ private boolean tuningMode;
   @Override
   public void periodic()
   {
-    translationValue = SmartDashboard.getNumber("Translation Speed", maximumSpeed);
 
     Logger.recordOutput("Robot Angle", getHeading());
     Logger.recordOutput("Robot Pose", getPose());
