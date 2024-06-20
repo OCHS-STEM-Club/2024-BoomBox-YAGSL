@@ -36,6 +36,7 @@ import frc.robot.subsystems.ShooterSubsystem;
 import frc.robot.subsystems.SwerveSubsystem;
 
 import java.io.File;
+import java.security.interfaces.RSAKey;
 
 import javax.management.OperationsException;
 
@@ -50,7 +51,8 @@ import com.pathplanner.lib.auto.NamedCommands;
 public class RobotContainer
 {
   // private SwerveSubsystem m_swerveSubsystem = new SwerveSubsystem(new File(Filesystem.getDeployDirectory(),"swerve"));
-
+  public double Tspeed;
+  public double Rspeed;
   // The robot's subsystems and commands are defined here...
   private final SwerveSubsystem drivebase = new SwerveSubsystem(new File(Filesystem.getDeployDirectory(),
                                                                          "swerve/neo"));
@@ -133,6 +135,9 @@ public class RobotContainer
     drivebase.setDefaultCommand(!RobotBase.isSimulation() ? absoluteFieldDrive : driveFieldOrientedDirectAngleSim);
     
     SmartDashboard.putData("Autos", autoChooser);
+
+    SmartDashboard.putNumber("Translation Speed", 0.8);
+    SmartDashboard.putNumber("Rotation Speed", 4);
 
   }
 
@@ -287,4 +292,15 @@ public class RobotContainer
   public void zeroGyro() {
     drivebase.zeroGyro();
   }
+
+  public double getTranslationSpeed() {
+    Tspeed = SmartDashboard.getNumber("Translation Speed", 0 );
+    return Tspeed;
+  }
+
+  public double getRotationSpeed() {
+    Rspeed = SmartDashboard.getNumber("Rotation Speed", 0 );
+    return Rspeed;
+  }
+
 }
