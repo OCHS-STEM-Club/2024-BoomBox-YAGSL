@@ -11,32 +11,6 @@
         "vgap": 16.0,
         "titleType": 0,
         "tiles": {
-          "4,3": {
-            "size": [
-              2,
-              1
-            ],
-            "content": {
-              "_type": "Text View",
-              "_source0": "network_table:///SmartDashboard/Arm Encoder",
-              "_title": "/SmartDashboard/Arm Encoder",
-              "_glyph": 148,
-              "_showGlyph": false
-            }
-          },
-          "6,3": {
-            "size": [
-              2,
-              1
-            ],
-            "content": {
-              "_type": "Text View",
-              "_source0": "network_table:///SmartDashboard/Arm PID Value",
-              "_title": "SmartDashboard/Arm PID Value",
-              "_glyph": 148,
-              "_showGlyph": false
-            }
-          },
           "9,3": {
             "size": [
               1,
@@ -52,45 +26,45 @@
               "Colors/Color when false": "#8B0000FF"
             }
           },
-          "8,3": {
-            "size": [
-              1,
-              1
-            ],
-            "content": {
-              "_type": "Toggle Switch",
-              "_source0": "network_table:///SmartDashboard/Tuning Mode",
-              "_title": "SmartDashboard/Tuning Mode",
-              "_glyph": 148,
-              "_showGlyph": false
-            }
-          },
-          "0,3": {
-            "size": [
-              3,
-              1
-            ],
-            "content": {
-              "_type": "ComboBox Chooser",
-              "_source0": "network_table:///SmartDashboard/Autos",
-              "_title": "/SmartDashboard/Autos",
-              "_glyph": 148,
-              "_showGlyph": false
-            }
-          },
           "0,0": {
             "size": [
-              3,
-              3
+              4,
+              2
             ],
             "content": {
               "_type": "Boolean Box",
               "_source0": "network_table:///AdvantageKit/RealOutputs/Beam Break",
-              "_title": "/AdvantageKit/RealOutputs/Beam Break",
+              "_title": "AdvantageKit/RealOutputs/Beam Break",
               "_glyph": 148,
               "_showGlyph": false,
-              "Colors/Color when true": "#FF0000FF",
-              "Colors/Color when false": "#00FF00FF"
+              "Colors/Color when true": "#7CFC00FF",
+              "Colors/Color when false": "#8B0000FF"
+            }
+          },
+          "4,0": {
+            "size": [
+              5,
+              2
+            ],
+            "content": {
+              "_type": "ComboBox Chooser",
+              "_source0": "network_table:///SmartDashboard/Autos",
+              "_title": "SmartDashboard/Autos",
+              "_glyph": 148,
+              "_showGlyph": false
+            }
+          },
+          "0,2": {
+            "size": [
+              4,
+              1
+            ],
+            "content": {
+              "_type": "Text View",
+              "_source0": "network_table:///SmartDashboard/Arm Encoder",
+              "_title": "/SmartDashboard/Arm Encoder",
+              "_glyph": 148,
+              "_showGlyph": false
             }
           }
         }
@@ -111,9 +85,9 @@
     }
   ],
   "windowGeometry": {
-    "x": -7.199999809265137,
-    "y": -7.199999809265137,
-    "width": 1550.4000244140625,
-    "height": 878.4000244140625
+    "x": -7.333333492279053,
+    "y": -7.333333492279053,
+    "width": 1294.6666259765625,
+    "height": 734.6666870117188
   }
 }

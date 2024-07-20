@@ -47,8 +47,8 @@ public final class Constants
     public static final double LEFT_Y_DEADBAND  = 0.1;
     public static final double RIGHT_X_DEADBAND = 0.2;
 
-    public static final double ROTATION_CONSTANT = 5;
-    public static final double TRANSLATION_X_CONSTANT = 0.75;
+    public static final double ROTATION_CONSTANT = 4;
+    public static final double TRANSLATION_X_CONSTANT = 1;
     public static final double TRANSLATION_Y_CONSTANT = Constants.OperatorConstants.TRANSLATION_X_CONSTANT;
 
     public static final int kOperatorControllerPort = 2;
@@ -65,7 +65,7 @@ public final class Constants
 
   public static class IntakeConstants {
     public static final int kIntakeMotorID = 18;
-    public static final double kIntakeInSpeed = 0.5;
+    public static final double kIntakeInSpeed = 0.45;
     public static final double kIntakeOutSpeed = -0.5;
     public static final int kBeamBreakPort = 0;
   }
