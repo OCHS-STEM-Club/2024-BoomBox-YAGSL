@@ -29,6 +29,7 @@ import frc.robot.commands.Intake.IntakeInCommand;
 import frc.robot.commands.Intake.IntakeOutCommand;
 import frc.robot.commands.Intake.IntakeOverrideCommand;
 import frc.robot.commands.Shooter.ShooterCommand;
+import frc.robot.commands.Shooter.ShooterShuttleCmd;
 import frc.robot.subsystems.ArmSubsystem;
 import frc.robot.subsystems.ClimberSubsystem;
 import frc.robot.subsystems.IntakeSubsystem;
@@ -77,6 +78,8 @@ public class RobotContainer
   ClimberUpOverrideCmd m_climberUpOverrideCmd = new ClimberUpOverrideCmd(m_climberSubsystem);
   ClimberDownCommand m_climberDownCommand = new ClimberDownCommand(m_climberSubsystem);
   ClimberUpCommand m_climberUpCommand = new ClimberUpCommand(m_climberSubsystem);
+  ShooterShuttleCmd m_shooterShuttleCommand = new ShooterShuttleCmd(m_shooterSubsystem);
+
 
   /**
    * The container for the robot. Contains subsystems, OI devices, and commands.
@@ -167,6 +170,10 @@ public class RobotContainer
       m_intakeOutCommand
     );
 
+    driverXbox.rightBumper().whileTrue(
+      m_shooterShuttleCommand
+    );
+
     // Button Box Configs
     m_buttonBox.button(1).whileTrue(
       m_manualArmDownCommand
@@ -223,6 +230,10 @@ public class RobotContainer
 
     driverXbox.leftBumper().whileTrue(
       m_intakeOutCommand
+    );
+
+    driverXbox.rightBumper().whileTrue(
+    m_shooterShuttleCommand
     );
 
     // Operator Configs
