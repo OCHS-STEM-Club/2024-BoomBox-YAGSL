@@ -47,8 +47,8 @@ public final class Constants
     public static final double LEFT_Y_DEADBAND  = 0.1;
     public static final double RIGHT_X_DEADBAND = 0.2;
 
-    public static final double ROTATION_CONSTANT = 2;
-    public static final double TRANSLATION_X_CONSTANT = 0.75;
+    public static final double ROTATION_CONSTANT = 6;
+    public static final double TRANSLATION_X_CONSTANT = 1;
     public static final double TRANSLATION_Y_CONSTANT = Constants.OperatorConstants.TRANSLATION_X_CONSTANT;
 
     public static final int kOperatorControllerPort = 2;
