@@ -93,7 +93,7 @@ Logger.start(); // Start logging! No more data receivers, replay sources, or met
   /** This autonomous runs the autonomous command selected by your {@link RobotContainer} class. */
   @Override
   public void autonomousInit() {
-    m_robotContainer.zeroGyro();
+    m_robotContainer.negativZeroGyro();
     m_robotContainer.setMotorBrake(true);
     m_autonomousCommand = m_robotContainer.getAutonomousCommand();
 

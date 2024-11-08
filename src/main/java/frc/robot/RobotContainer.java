@@ -8,8 +8,10 @@ import edu.wpi.first.math.MathUtil;
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.geometry.Translation2d;
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.Filesystem;
 import edu.wpi.first.wpilibj.RobotBase;
+import edu.wpi.first.wpilibj.DriverStation.Alliance;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
@@ -126,7 +128,20 @@ public class RobotContainer
         () -> driverXbox.getRawAxis(2));
 
 
-    AbsoluteFieldDrive absoluteFieldDrive = new AbsoluteFieldDrive(
+        // if(DriverStation.getAlliance().get() == Alliance.Blue){
+        //   AbsoluteFieldDrive absoluteFieldDrive = new AbsoluteFieldDrive(
+        //   drivebase, 
+        //   () -> MathUtil.applyDeadband(-driverXbox.getLeftY()*OperatorConstants.TRANSLATION_Y_CONSTANT, OperatorConstants.LEFT_Y_DEADBAND), 
+        //   () -> MathUtil.applyDeadband(-driverXbox.getLeftX()*OperatorConstants.TRANSLATION_X_CONSTANT, OperatorConstants.LEFT_X_DEADBAND), 
+        //   () -> MathUtil.applyDeadband(-driverXbox.getRightX()*OperatorConstants.ROTATION_CONSTANT, OperatorConstants.RIGHT_X_DEADBAND));
+        // } else if(DriverStation.getAlliance().get() == Alliance.Red){
+        //   AbsoluteFieldDrive absoluteFieldDrive = new AbsoluteFieldDrive(
+        //   drivebase, 
+        //   () -> MathUtil.applyDeadband(driverXbox.getLeftY()*OperatorConstants.TRANSLATION_Y_CONSTANT, OperatorConstants.LEFT_Y_DEADBAND), 
+        //   () -> MathUtil.applyDeadband(driverXbox.getLeftX()*OperatorConstants.TRANSLATION_X_CONSTANT, OperatorConstants.LEFT_X_DEADBAND), 
+        //   () -> MathUtil.applyDeadband(-driverXbox.getRightX()*OperatorConstants.ROTATION_CONSTANT, OperatorConstants.RIGHT_X_DEADBAND));
+        // }
+        AbsoluteFieldDrive absoluteFieldDrive = new AbsoluteFieldDrive(
       drivebase, 
       () -> MathUtil.applyDeadband(-driverXbox.getLeftY()*OperatorConstants.TRANSLATION_Y_CONSTANT, OperatorConstants.LEFT_Y_DEADBAND), 
       () -> MathUtil.applyDeadband(-driverXbox.getLeftX()*OperatorConstants.TRANSLATION_X_CONSTANT, OperatorConstants.LEFT_X_DEADBAND), 
@@ -299,5 +314,9 @@ public class RobotContainer
 
   public void zeroGyro() {
     drivebase.zeroGyro();
+  }
+
+  public void negativZeroGyro(){
+    drivebase.negativZeroGyro();
   }
 }
