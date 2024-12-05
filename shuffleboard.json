@@ -37,8 +37,8 @@
               "_title": "/AdvantageKit/RealOutputs/Beam Break",
               "_glyph": 148,
               "_showGlyph": false,
-              "Colors/Color when true": "#7CFC00FF",
-              "Colors/Color when false": "#8B0000FF"
+              "Colors/Color when true": "#FF0000FF",
+              "Colors/Color when false": "#00FF00FF"
             }
           },
           "0,2": {
@@ -88,6 +88,6 @@
     "x": -7.333333492279053,
     "y": -7.333333492279053,
     "width": 1294.6666259765625,
-    "height": 686.6666870117188
+    "height": 766.6666870117188
   }
 }
