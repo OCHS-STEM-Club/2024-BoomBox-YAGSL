@@ -41,19 +41,6 @@
               "Colors/Color when false": "#8B0000FF"
             }
           },
-          "4,0": {
-            "size": [
-              5,
-              2
-            ],
-            "content": {
-              "_type": "ComboBox Chooser",
-              "_source0": "network_table:///SmartDashboard/Autos",
-              "_title": "/SmartDashboard/Autos",
-              "_glyph": 148,
-              "_showGlyph": false
-            }
-          },
           "0,2": {
             "size": [
               4,
@@ -63,6 +50,19 @@
               "_type": "Text View",
               "_source0": "network_table:///SmartDashboard/Arm Encoder",
               "_title": "/SmartDashboard/Arm Encoder",
+              "_glyph": 148,
+              "_showGlyph": false
+            }
+          },
+          "4,0": {
+            "size": [
+              5,
+              2
+            ],
+            "content": {
+              "_type": "ComboBox Chooser",
+              "_source0": "network_table:///SmartDashboard/Autos",
+              "_title": "SmartDashboard/Autos",
               "_glyph": 148,
               "_showGlyph": false
             }
@@ -88,6 +88,6 @@
     "x": -7.333333492279053,
     "y": -7.333333492279053,
     "width": 1294.6666259765625,
-    "height": 734.6666870117188
+    "height": 686.6666870117188
   }
 }

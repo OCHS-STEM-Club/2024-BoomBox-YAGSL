@@ -83,7 +83,7 @@ public class ArmSubsystem extends SubsystemBase {
     armMotorLeft.follow(armMotorRight);
 
     armValue = 0;
-    tuningMode = false;
+    tuningMode = false;     
 
     SmartDashboard.putNumber("Arm PID Value", armValue);
     SmartDashboard.putBoolean("Tuning Mode", tuningMode);
@@ -91,7 +91,7 @@ public class ArmSubsystem extends SubsystemBase {
 
   @Override
   public void periodic() {
-
+    
     // This method will be called once per scheduler run
     Logger.recordOutput("Left Arm Motor", armMotorLeft.get());
     Logger.recordOutput("Right Arm Motor", armMotorRight.get());

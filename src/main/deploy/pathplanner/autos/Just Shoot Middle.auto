@@ -5,7 +5,7 @@
       "x": 1.15,
       "y": 5.55
     },
-    "rotation": 0
+    "rotation": 180.0
   },
   "command": {
     "type": "sequential",
@@ -15,12 +15,6 @@
           "type": "parallel",
           "data": {
             "commands": [
-              {
-                "type": "named",
-                "data": {
-                  "name": "Shooter On"
-                }
-              },
               {
                 "type": "named",
                 "data": {
@@ -46,12 +40,6 @@
           "type": "wait",
           "data": {
             "waitTime": 0.5
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "Arm to Intake"
           }
         },
         {
